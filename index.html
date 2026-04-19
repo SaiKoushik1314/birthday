@@ -932,9 +932,239 @@
     @media (max-width: 400px) {
       .gallery-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── ACTIVITY HUB ── */
+    .activity-hub { margin-top: 2.5rem; }
+    .hub-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      letter-spacing: .06em;
+      margin-bottom: 1.4rem;
+      text-align: center;
+    }
+    .act-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .act-tiles { grid-template-columns: 1fr; } }
+    .act-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 2rem 1.2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(12px);
+      border: 2px solid var(--blush-dark);
+      box-shadow: 0 4px 18px rgba(74,127,165,.1);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      user-select: none;
+    }
+    .act-tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(74,127,165,.2);
+    }
+    .act-tile.active {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(201,168,76,.3);
+    }
+    .act-glow {
+      position: absolute;
+      inset: -60%;
+      background: radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .act-tile.active .act-glow { opacity: 1; }
+    .act-icon { font-size: 2.4rem; margin-bottom: .5rem; }
+    .act-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .3rem;
+    }
+    .act-desc {
+      font-size: .78rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-bottom: .9rem;
+    }
+    .act-chip {
+      display: inline-block;
+      padding: .28rem .85rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--blue), #5ba8d4);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      transition: background .3s;
+    }
+    .act-tile.active .act-chip {
+      background: linear-gradient(135deg, var(--gold), #e8c96d);
+    }
+    .act-panel {
+      display: none;
+      margin-top: 2rem;
+      animation: panelIn .4s ease;
+    }
+    .act-panel.active { display: block; }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .panel-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: 1rem;
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--blush-dark);
+      background: transparent;
+      color: var(--text-light);
+      font-size: .8rem;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .panel-back-btn:hover { background: var(--blush); color: var(--text); }
+    .act-step {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .3rem;
+    }
+    .act-tile.locked {
+      opacity: .6;
+      filter: grayscale(.5);
+      cursor: not-allowed;
+    }
+    .act-tile.locked:hover { transform: none; box-shadow: 0 4px 18px rgba(74,127,165,.1); }
+    .act-lock-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(4px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      z-index: 5;
+    }
+    .act-tile.locked .act-lock-overlay { display: flex; }
+    .lock-icon { font-size: 1.8rem; }
+    .lock-hint { font-size: .75rem; color: var(--text); font-weight: 500; text-align: center; padding: 0 .6rem; }
+    @keyframes unlockPop {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(201,168,76,.35); }
+      70%  { transform: scale(.97); }
+      100% { transform: scale(1); }
+    }
+    .act-tile.unlocking { animation: unlockPop .55s ease forwards; }
+
+    /* ── FLOATING MUSIC BUTTON ── */
+    #musicBtn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.4rem;
+      height: 3.4rem;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--blue), #5ba8d4);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(74,127,165,.45);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    #musicBtn:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(74,127,165,.55); }
+    #musicBtn.playing {
+      background: linear-gradient(135deg, var(--gold), #e8c96d);
+      animation: musicPulse 1.2s ease-in-out infinite;
+    }
+    @keyframes musicPulse {
+      0%,100% { box-shadow: 0 4px 18px rgba(201,168,76,.4); }
+      50%      { box-shadow: 0 4px 28px rgba(201,168,76,.75); transform: scale(1.06); }
+    }
+
+    /* ── KNIFE ANIMATION ── */
+    .cake-knife {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%) rotate(130deg);
+      font-size: 2.6rem;
+      pointer-events: none;
+      z-index: 30;
+      opacity: 0;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,.35));
+    }
+    @keyframes knifeSlice {
+      0%   { opacity:1; top:-55px; left:60%; transform:translateX(-50%) rotate(130deg); }
+      30%  { opacity:1; top:36%;   left:50%; transform:translateX(-50%) rotate(130deg); }
+      55%  { opacity:1; top:36%;   left:58%; transform:translateX(-50%) rotate(100deg); }
+      75%  { opacity:1; top:18%;   left:68%; transform:translateX(-50%) rotate(80deg); }
+      90%  { opacity:.6; top:5%;   left:75%; transform:translateX(-50%) rotate(130deg); }
+      100% { opacity:0;  top:-40px;left:80%; transform:translateX(-50%) rotate(130deg); }
+    }
+    .cake-knife.cutting { animation: knifeSlice 2.2s cubic-bezier(.4,0,.2,1) forwards; }
+
+    .cake-slice-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 2.5px;
+      background: rgba(255,255,255,.9);
+      transform-origin: left center;
+      border-radius: 2px;
+      box-shadow: 0 0 5px rgba(255,255,255,.8);
+      transition: width .5s ease;
+      z-index: 20;
+    }
+    .sl1 { transform: rotate(-25deg); }
+    .sl2 { transform: rotate(30deg); }
+    .cake-slice-line.cut { width: 46%; }
+
+    /* ── CUT CAKE BUTTON ── */
+    .cut-cake-btn {
+      margin-top: 1.4rem;
+      padding: .65rem 2rem;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #e85d5d, #c0392b);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(192,57,43,.35);
+      letter-spacing: .04em;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .cut-cake-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,57,43,.45); }
+    .cut-cake-btn:disabled { opacity: .65; cursor: default; }
   </style>
 </head>
 <body>
+
+<!-- Floating music toggle -->
+<button id="musicBtn" onclick="toggleMusic()" title="Play Happy Birthday 🎵" aria-label="Toggle music">🎵</button>
 
 <!-- ── HERO ── -->
 <section id="hero">
@@ -1197,7 +1427,7 @@
 
   <div class="video-wrap fade-in">
     <video controls playsinline poster="">
-      <source src="photos/dance video.MP4" type="video/mp4" />
+      <source src="photos/dance%20video.MP4" type="video/mp4" />
       Your browser doesn't support video playback.
     </video>
     <p class="video-caption">Every time I watch this, I fall in love all over again. 🎶</p>
@@ -1266,74 +1496,119 @@
       </p>
     </div>
 
-    <!-- Birthday Cake (top view) -->
-    <div class="cake-section">
-      <p class="cake-hint">✨ Click the <strong>magic candle</strong> in the center!</p>
-      <div class="cake-top-view">
-        <div class="cake-surface">
-          <div class="cake-frosting-ring r1"></div>
-          <div class="cake-frosting-ring r2"></div>
-          <div class="cake-center-text">Ravali<br/>❤️</div>
-          <div id="cakeSprinkles"></div>
+    <!-- Activity Hub -->
+    <div class="activity-hub">
+      <p class="hub-label">Start here — complete each challenge to unlock the next 🔓</p>
+      <div class="act-tiles">
+
+        <!-- Step 1: Memory Match (always unlocked) -->
+        <div class="act-tile" data-act="memory" onclick="showActivity('memory')">
+          <div class="act-glow"></div>
+          <div class="act-step">Step 1</div>
+          <div class="act-icon">💝</div>
+          <div class="act-title">Memory Match</div>
+          <div class="act-desc">Find all the matching love pairs to unlock the next surprise</div>
+          <span class="act-chip">Play 🃏</span>
         </div>
-        <!-- Side candles (blown out by magic candle click 1) -->
-        <div class="cake-candle c1"><div class="cflame" id="fl0"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ff8a80,#d32f2f)"></div></div>
-        <div class="cake-candle c2"><div class="cflame" id="fl1"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#a5d6a7,#2e7d32)"></div></div>
-        <div class="cake-candle c3"><div class="cflame" id="fl2"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ce93d8,#6a1b9a)"></div></div>
-        <div class="cake-candle c4"><div class="cflame" id="fl3"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#80d8ff,#01579b)"></div></div>
-        <div class="cake-candle c5"><div class="cflame" id="fl4"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ffcc80,#e65100)"></div></div>
-        <!-- MAGIC CANDLE (center) -->
-        <div class="magic-candle" id="magicCandle" onclick="magicCandleClick()">
-          <div class="magic-flame" id="magicFlame">
-            <div class="mf-outer"></div>
-            <div class="mf-inner"></div>
-            <span class="mf-star">✦</span>
+
+        <!-- Step 2: Mario Game (locked until memory match won) -->
+        <div class="act-tile locked" data-act="game" onclick="showActivity('game')">
+          <div class="act-glow"></div>
+          <div class="act-lock-overlay"><span class="lock-icon">🔒</span><span class="lock-hint">Complete Memory Match first</span></div>
+          <div class="act-step">Step 2</div>
+          <div class="act-icon">🕹️</div>
+          <div class="act-title">Save Princess Ravali</div>
+          <div class="act-desc">A Mario-style adventure just for you</div>
+          <span class="act-chip">Locked 🔒</span>
+        </div>
+
+        <!-- Step 3: Birthday Cake (locked until game won) -->
+        <div class="act-tile locked" data-act="cake" onclick="showActivity('cake')">
+          <div class="act-glow"></div>
+          <div class="act-lock-overlay"><span class="lock-icon">🔒</span><span class="lock-hint">Save Princess Ravali first</span></div>
+          <div class="act-step">Step 3</div>
+          <div class="act-icon">🎂</div>
+          <div class="act-title">Your Birthday Gift</div>
+          <div class="act-desc">The magic surprise waiting just for you</div>
+          <span class="act-chip">Locked 🔒</span>
+        </div>
+
+      </div>
+
+      <!-- Panels -->
+      <div class="act-panel" id="panel-cake">
+        <button class="panel-back-btn" onclick="showActivity(null)">← Back</button>
+        <div class="cake-section">
+          <p class="cake-hint">✨ Click the <strong>magic candle</strong> in the center!</p>
+          <div class="cake-top-view">
+            <div class="cake-surface">
+              <div class="cake-frosting-ring r1"></div>
+              <div class="cake-frosting-ring r2"></div>
+              <div class="cake-center-text">Ravali<br/>❤️</div>
+              <div id="cakeSprinkles"></div>
+            </div>
+            <div class="cake-candle c1"><div class="cflame" id="fl0"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ff8a80,#d32f2f)"></div></div>
+            <div class="cake-candle c2"><div class="cflame" id="fl1"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#a5d6a7,#2e7d32)"></div></div>
+            <div class="cake-candle c3"><div class="cflame" id="fl2"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ce93d8,#6a1b9a)"></div></div>
+            <div class="cake-candle c4"><div class="cflame" id="fl3"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#80d8ff,#01579b)"></div></div>
+            <div class="cake-candle c5"><div class="cflame" id="fl4"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ffcc80,#e65100)"></div></div>
+            <div class="magic-candle" id="magicCandle" onclick="magicCandleClick()">
+              <div class="magic-flame" id="magicFlame"><div class="mf-outer"></div><div class="mf-inner"></div><span class="mf-star">✦</span></div>
+              <div class="magic-body"></div>
+              <span class="magic-label">✨Magic✨</span>
+            </div>
+            <!-- Knife overlay -->
+            <div class="cake-knife" id="cakeKnife">🔪</div>
+            <div class="cake-slice-line sl1" id="sliceLine1"></div>
+            <div class="cake-slice-line sl2" id="sliceLine2"></div>
           </div>
-          <div class="magic-body"></div>
-          <span class="magic-label">✨Magic✨</span>
+          <p class="wish-msg" id="wishMsg"></p>
+          <div class="bday-reveal" id="bdayReveal">
+            <div class="bday-text" id="bdayText"></div>
+          </div>
+          <button class="cut-cake-btn" id="cutCakeBtn" onclick="cutTheCake()" style="display:none">🔪 Cut the Cake!</button>
         </div>
       </div>
-      <p class="wish-msg" id="wishMsg"></p>
-      <!-- Birthday reveal -->
-      <div class="bday-reveal" id="bdayReveal">
-        <div class="bday-text" id="bdayText"></div>
-      </div>
-    </div>
 
-    <!-- Mario-style Game -->
-    <div class="game-section">
-      <h3 class="game-title">🕹️ Save Princess Ravali!</h3>
-      <div class="game-instructions">
-        <div class="inst-grid">
-          <div class="inst-item"><span class="inst-key">← →</span> Move</div>
-          <div class="inst-item"><span class="inst-key">↑ Space</span> Jump</div>
-          <div class="inst-item"><span>💋</span> Kiss Power → Double Jump!</div>
-          <div class="inst-item"><span>❤️</span> Collect Hearts</div>
-          <div class="inst-item" style="grid-column:1/-1"><span>🏰</span> Reach Ravali's castle to win! Fall = restart from checkpoint.</div>
+      <div class="act-panel" id="panel-game">
+        <button class="panel-back-btn" onclick="showActivity(null)">← Back</button>
+        <div class="game-section">
+          <h3 class="game-title">🕹️ Save Princess Ravali!</h3>
+          <div class="game-instructions">
+            <div class="inst-grid">
+              <div class="inst-item"><span class="inst-key">← →</span> Move</div>
+              <div class="inst-item"><span class="inst-key">↑ Space</span> Jump</div>
+              <div class="inst-item"><span>💋</span> Kiss Power → Double Jump!</div>
+              <div class="inst-item"><span>❤️</span> Collect Hearts</div>
+              <div class="inst-item" style="grid-column:1/-1"><span>🏰</span> Reach Ravali's castle to win! Fall = restart from checkpoint.</div>
+            </div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="gameCanvas" width="560" height="300"></canvas>
+          </div>
+          <div class="mobile-ctrl">
+            <button class="ctrl-btn" id="btnLeft">◀</button>
+            <button class="ctrl-btn" id="btnJump">⬆ JUMP</button>
+            <button class="ctrl-btn" id="btnRight">▶</button>
+          </div>
         </div>
       </div>
-      <div class="canvas-wrap">
-        <canvas id="gameCanvas" width="560" height="300"></canvas>
-      </div>
-      <div class="mobile-ctrl">
-        <button class="ctrl-btn" id="btnLeft">◀</button>
-        <button class="ctrl-btn" id="btnJump">⬆ JUMP</button>
-        <button class="ctrl-btn" id="btnRight">▶</button>
-      </div>
-    </div>
 
-    <!-- Memory Match Game -->
-    <div class="game-section" style="margin-top:3rem">
-      <h3 class="game-title">💝 Memory Match</h3>
-      <p class="game-sub">Find all matching pairs — can you do it in under 20 moves?</p>
-      <div class="game-meta">
-        <span>Moves: <strong id="moveCount">0</strong></span>
-        <button class="reset-btn" onclick="initMemGame()">Restart 🔄</button>
+      <div class="act-panel" id="panel-memory">
+        <button class="panel-back-btn" onclick="showActivity(null)">← Back</button>
+        <div class="game-section">
+          <h3 class="game-title">💝 Memory Match</h3>
+          <p class="game-sub">Find all matching pairs — can you do it in under 20 moves?</p>
+          <div class="game-meta">
+            <span>Moves: <strong id="moveCount">0</strong></span>
+            <button class="reset-btn" onclick="initMemGame()">Restart 🔄</button>
+          </div>
+          <div class="card-grid" id="cardGrid"></div>
+          <div class="win-msg" id="winMsg"></div>
+        </div>
       </div>
-      <div class="card-grid" id="cardGrid"></div>
-      <div class="win-msg" id="winMsg"></div>
-    </div>
 
+    </div><!-- /activity-hub -->
   </div>
 </section>
 
@@ -1395,7 +1670,37 @@
     el.classList.add('open');
     setTimeout(() => el.classList.add('visible'), 30);
     document.querySelector('.surprise-btn').style.display = 'none';
-    setTimeout(() => { spawnSprinkles(); startGameLoop(); initMemGame(); }, 400);
+    setTimeout(() => startGameLoop(), 400);
+  }
+
+  // Activity Hub
+  let _memInited = false, _cakeInited = false;
+
+  function showActivity(name) {
+    document.querySelectorAll('.act-tile').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.act-panel').forEach(p => p.classList.remove('active'));
+    if (!name) return;
+    const tile = document.querySelector(`.act-tile[data-act="${name}"]`);
+    if (tile && tile.classList.contains('locked')) return; // blocked
+    const panel = document.getElementById(`panel-${name}`);
+    if (tile) tile.classList.add('active');
+    if (panel) {
+      panel.classList.add('active');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (name === 'cake' && !_cakeInited) { spawnSprinkles(); _cakeInited = true; }
+    if (name === 'memory' && !_memInited) { initMemGame(); _memInited = true; }
+  }
+
+  window.unlockActivity = function unlockActivity(name) {
+    const tile = document.querySelector(`.act-tile[data-act="${name}"]`);
+    if (!tile || !tile.classList.contains('locked')) return;
+    tile.classList.remove('locked');
+    tile.classList.add('unlocking');
+    tile.querySelector('.act-chip').textContent = name === 'game' ? 'Play 🎮' : 'Open ✨';
+    setTimeout(() => tile.classList.remove('unlocking'), 600);
+    // scroll the tile into view so Ravali notices it
+    setTimeout(() => tile.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 300);
   }
 
   // ── CAKE (TOP VIEW) ──
@@ -1430,6 +1735,11 @@
         rev.classList.add('show');
         requestAnimationFrame(() => requestAnimationFrame(() => rev.classList.add('visible')));
         typeReveal('bdayText', 'Happy Birthday\nChakkani Chukka! 🌹❤️');
+        // Show cut button after typing completes (~2.8s for the text)
+        setTimeout(() => {
+          const btn = document.getElementById('cutCakeBtn');
+          if (btn) btn.style.display = 'inline-block';
+        }, 2900);
       }, 700);
 
       document.getElementById('wishMsg').textContent = '🎊 Your wish is coming true! 🎊';
@@ -1696,9 +2006,6 @@
     function drawPlayer() {
       const x = player.x - cam;
       const y = player.y;
-      ctx.save();
-
-      // Kiss glow + orbiting hearts
       if (kissActive) {
         ctx.shadowColor='#ff69b4'; ctx.shadowBlur=22;
         ['❤️','💕'].forEach((h,i)=>{
@@ -1707,68 +2014,7 @@
         });
         ctx.shadowBlur=0;
       }
-
-      // Shoes
-      ctx.fillStyle='#2c1810';
-      ctx.beginPath(); ctx.roundRect(x,   y+34, 14, 7, [3,3,4,4]); ctx.fill();
-      ctx.beginPath(); ctx.roundRect(x+18, y+34, 14, 7, [3,3,4,4]); ctx.fill();
-
-      // Pants (two legs)
-      ctx.fillStyle='#1a3a6e';
-      ctx.fillRect(x+2,  y+22, 12, 14);
-      ctx.fillRect(x+18, y+22, 12, 14);
-      // belt
-      ctx.fillStyle='#0d2244';
-      ctx.fillRect(x, y+22, 32, 3);
-
-      // Shirt body
-      ctx.fillStyle='#e63946';
-      ctx.beginPath(); ctx.roundRect(x, y+12, 32, 12, 3); ctx.fill();
-
-      // Left arm
-      ctx.fillStyle='#e63946';
-      ctx.beginPath(); ctx.roundRect(x-7, y+12, 9, 12, 4); ctx.fill();
-      // Left hand
-      ctx.fillStyle='#f4a261';
-      ctx.beginPath(); ctx.arc(x-3, y+24, 4, 0, Math.PI*2); ctx.fill();
-
-      // Right arm
-      ctx.fillStyle='#e63946';
-      ctx.beginPath(); ctx.roundRect(x+30, y+12, 9, 12, 4); ctx.fill();
-      // Right hand
-      ctx.fillStyle='#f4a261';
-      ctx.beginPath(); ctx.arc(x+35, y+24, 4, 0, Math.PI*2); ctx.fill();
-
-      // Neck
-      ctx.fillStyle='#f4a261';
-      ctx.fillRect(x+12, y+7, 8, 7);
-
-      // Head
-      ctx.fillStyle='#f4a261';
-      ctx.beginPath(); ctx.arc(x+16, y+6, 9, 0, Math.PI*2); ctx.fill();
-
-      // Hair
-      ctx.fillStyle='#2c1810';
-      ctx.beginPath(); ctx.arc(x+16, y+4, 9, Math.PI, 0); ctx.fill();
-      // hair front tuft
-      ctx.beginPath(); ctx.arc(x+16, y-2, 5, Math.PI, 0); ctx.fill();
-
-      // Eye whites
-      ctx.fillStyle='#fff';
-      ctx.beginPath(); ctx.arc(x+11, y+6, 2.5, 0, Math.PI*2); ctx.fill();
-      ctx.beginPath(); ctx.arc(x+21, y+6, 2.5, 0, Math.PI*2); ctx.fill();
-      // Pupils
-      ctx.fillStyle='#222';
-      ctx.beginPath(); ctx.arc(x+12, y+6, 1.4, 0, Math.PI*2); ctx.fill();
-      ctx.beginPath(); ctx.arc(x+22, y+6, 1.4, 0, Math.PI*2); ctx.fill();
-
-      // Smile
-      ctx.strokeStyle='#8b4513'; ctx.lineWidth=1.3;
-      ctx.beginPath(); ctx.arc(x+16, y+9, 4, .15, Math.PI-.15); ctx.stroke();
-
-      ctx.restore();
-
-      // Kiss badge above head
+      drawPersonAt(x, y);
       if (kissActive) {
         ctx.font='13px serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
         ctx.fillText('💋', x+30, y-6);
@@ -1871,7 +2117,7 @@
 
       } else if (cs.phase === 3) {
         cs.bigH = Math.min(1, cs.t / 55);
-        if (cs.t >= 150) { cs.phase = 4; cs.t = 0; launchConfetti(); }
+        if (cs.t >= 150) { cs.phase = 4; cs.t = 0; launchConfetti(); setTimeout(() => window.unlockActivity && window.unlockActivity('cake'), 1200); }
       }
       // phase 4 = final screen, wait for click
     }
@@ -2026,8 +2272,8 @@
       // camera
       cam=Math.max(0,Math.min(player.x-canvas.width*.33, LEVEL_W-canvas.width));
 
-      // win
-      if(player.x+player.w>CASTLE.x+10) { gameState='won'; launchConfetti(); }
+      // win → trigger cutscene
+      if(player.x+player.w>CASTLE.x+10) startCutscene();
 
       // fall
       if(player.y>canvas.height+60) spawnPlayer(checkpointReached);
@@ -2036,18 +2282,24 @@
     // ── Loop ──
     function loop() {
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      drawBg(); drawGround(); drawPlats();
-      drawHearts(); drawKiss(); drawCastle();
-      drawPlayer(); drawHUD();
-      if(gameState==='idle')
-        drawOverlay('🕹️ Save Princess Ravali!','Press ▶ or tap START to begin','(Arrow keys / WASD + Space to jump)','rgba(0,0,0,.52)');
-      if(gameState==='won') drawWin();
-      if(gameState==='playing') update();
+
+      if (gameState === 'cutscene') {
+        updateCutscene();
+        drawCutscene();
+      } else {
+        drawBg(); drawGround(); drawPlats();
+        drawHearts(); drawKiss(); drawCastle();
+        drawPlayer(); drawHUD();
+        if(gameState==='idle')
+          drawOverlay('🕹️ Save Princess Ravali!','Press ▶ or tap START to begin','(Arrow keys / WASD + Space to jump)','rgba(0,0,0,.52)');
+        if(gameState==='playing') update();
+      }
+
       requestAnimationFrame(loop);
     }
 
     function start() {
-      if(gameState==='idle'||gameState==='won') {
+      if(gameState==='idle' || (gameState==='cutscene' && cs && cs.phase===4)) {
         checkpointReached=false;
         initLevel(); spawnPlayer(false); gameState='playing';
       }
@@ -2060,6 +2312,116 @@
   })();
 
   function initGame() {} // kept for safety
+
+  // ── HAPPY BIRTHDAY MUSIC ──
+  (function() {
+    const C4=261.63, D4=293.66, E4=329.63, F4=349.23, G4=392.00,
+          A4=440.00, Bb4=466.16, C5=523.25;
+    const BPM = 88, Q = 60 / BPM;
+
+    // [freq (0=rest), quarter-note beats]
+    const MELODY = [
+      [C4,.75],[C4,.25],[D4,1],[C4,1],[F4,1],[E4,2],[0,.5],
+      [C4,.75],[C4,.25],[D4,1],[C4,1],[G4,1],[F4,2],[0,.5],
+      [C4,.75],[C4,.25],[C5,1],[A4,1],[F4,1],[E4,1],[D4,1.5],[0,.5],
+      [Bb4,.75],[Bb4,.25],[A4,1],[F4,1],[G4,1],[F4,3],[0,1],
+    ];
+
+    let actx = null, playing = false, loopTimer = null;
+
+    function playNote(freq, startTime, beats) {
+      if (!freq || !actx) return;
+      const osc  = actx.createOscillator();
+      const osc2 = actx.createOscillator();
+      const g1   = actx.createGain();
+      const g2   = actx.createGain();
+      osc.type  = 'triangle'; osc.frequency.value  = freq;
+      osc2.type = 'sine';     osc2.frequency.value = freq * 2;
+      const dur = beats * Q;
+      const att = Math.min(0.04, dur * 0.1);
+      const rel = Math.min(0.1,  dur * 0.15);
+      [g1, g2].forEach((g, i) => {
+        const vol = i === 0 ? 0.22 : 0.07;
+        g.gain.setValueAtTime(0, startTime);
+        g.gain.linearRampToValueAtTime(vol, startTime + att);
+        g.gain.setValueAtTime(vol, startTime + dur - rel);
+        g.gain.linearRampToValueAtTime(0, startTime + dur);
+      });
+      osc.connect(g1);  g1.connect(actx.destination);
+      osc2.connect(g2); g2.connect(actx.destination);
+      osc.start(startTime);  osc.stop(startTime + dur);
+      osc2.start(startTime); osc2.stop(startTime + dur);
+    }
+
+    function scheduleMelody() {
+      let t = actx.currentTime + 0.05, total = 0;
+      MELODY.forEach(([freq, beats]) => {
+        playNote(freq, t, beats * 0.88);
+        t += beats * Q; total += beats * Q;
+      });
+      return total;
+    }
+
+    function loop() {
+      if (!playing) return;
+      const dur = scheduleMelody();
+      loopTimer = setTimeout(loop, dur * 1000 - 50);
+    }
+
+    function updateBtn(on) {
+      const b = document.getElementById('musicBtn');
+      if (!b) return;
+      b.textContent = on ? '🔇' : '🎵';
+      b.classList.toggle('playing', on);
+    }
+
+    window.playHappyBirthday = function() {
+      if (playing) return;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+      if (actx.state === 'suspended') actx.resume();
+      playing = true;
+      updateBtn(true);
+      loop();
+    };
+
+    window.toggleMusic = function() {
+      if (playing) {
+        playing = false;
+        clearTimeout(loopTimer);
+        actx.close(); actx = null;
+        updateBtn(false);
+      } else {
+        window.playHappyBirthday();
+      }
+    };
+  })();
+
+  // ── CAKE CUT ──
+  function cutTheCake() {
+    const btn = document.getElementById('cutCakeBtn');
+    btn.disabled = true;
+    btn.textContent = '✂️ Cutting…';
+
+    const knife = document.getElementById('cakeKnife');
+    knife.classList.add('cutting');
+
+    // Grow cut lines after knife reaches the cake (~700ms in)
+    setTimeout(() => {
+      document.getElementById('sliceLine1').classList.add('cut');
+      setTimeout(() => document.getElementById('sliceLine2').classList.add('cut'), 250);
+    }, 700);
+
+    // Play music when knife hits
+    setTimeout(() => window.playHappyBirthday && window.playHappyBirthday(), 750);
+
+    // Extra confetti at the end
+    setTimeout(() => {
+      launchConfetti();
+      btn.textContent = '🎂 Happy Birthday Ravali! 🎉';
+    }, 2200);
+  }
 
   // ── MEMORY MATCH ──
   const MEM_EMOJIS = ['💍','🌹','❤️','🌸','🦋','✨','🎂','💌'];
@@ -2105,6 +2467,7 @@
             : `🌸 You did it in ${memMoves} moves! Beautiful, just like you! 💕`;
           document.getElementById('winMsg').textContent = msg;
           launchConfetti();
+          setTimeout(() => unlockActivity('game'), 1200);
         }
       } else {
         setTimeout(() => {
