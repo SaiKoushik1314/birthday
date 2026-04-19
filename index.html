@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Ravali ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush: #e3edf8;
+      --blush-dark: #b8d0ea;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --white: #f7fafd;
+      --text: #1e3a52;
+      --text-light: #4a6a88;
+      --blue: #4a7fa5;
+      --blue-light: #7aabcc;
+      --blue-pale: #dceefa;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      background: linear-gradient(160deg, #dceefa 0%, #eef5fc 40%, #fef6e4 100%);
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(122,171,204,.35) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-petals {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-60px) rotate(0deg); opacity: .7; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .hero-badge {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(.85rem, 2vw, 1rem);
+      color: var(--gold);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp .8s .2s ease forwards;
+    }
+
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp .9s .4s ease forwards;
+    }
+
+    #hero h1 span { color: #3a7ca5; }
+
+    #hero p {
+      margin-top: 1rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--text-light);
+      opacity: 0;
+      animation: fadeUp .9s .6s ease forwards;
+    }
+
+    .hero-btn {
+      margin-top: 2.4rem;
+      display: inline-block;
+      padding: .85rem 2.4rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #3a7ca5, #5ba8d4);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(58,124,165,.35);
+      transition: transform .25s, box-shadow .25s;
+      opacity: 0;
+      animation: fadeUp .9s .8s ease forwards;
+    }
+
+    .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(58,124,165,.45); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      opacity: 0;
+      animation: fadeUp .9s 1.2s ease forwards;
+    }
+
+    .scroll-hint span { font-size: .75rem; color: var(--text-light); letter-spacing: .1em; }
+
+    .scroll-arrow { width: 20px; height: 20px; border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(45deg); animation: bounce 1.4s infinite; }
+
+    @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(6px); } }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 5rem 1.5rem; }
+
+    .section-label {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .9rem;
+      color: var(--gold);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    .section-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--blush-dark));
+      margin: .8rem auto 3rem;
+      border-radius: 4px;
+    }
+
+    /* ── TIMELINE ── */
+    #story { background: #f4f9fd; }
+
+    .timeline {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1.1rem;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue-light), var(--gold-light));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2.5rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.55rem;
+      top: .2rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-light), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(58,124,165,.25);
+      border: 3px solid #fff;
+    }
+
+    .timeline-date {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: .4rem;
+    }
+
+    .timeline-desc {
+      font-size: .9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT HER ── */
+    #about {
+      background: linear-gradient(160deg, #dceefa 0%, #eef5fc 100%);
+      text-align: center;
+    }
+
+    .about-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 8px 40px rgba(58,124,165,.12);
+      border: 1px solid rgba(122,171,204,.3);
+    }
+
+    .about-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .about-card p {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    .traits {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: 1.8rem;
+    }
+
+    .trait {
+      padding: .45rem 1.2rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #dceefa, #fef6e4);
+      border: 1px solid var(--blush-dark);
+      font-size: .85rem;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 6px 24px rgba(30,58,82,.12);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.07); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,80,130,.6), transparent);
+      opacity: 0;
+      transition: opacity .35s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay span {
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+    }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,25,45,.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── LOVE MESSAGE ── */
+    #message {
+      background: linear-gradient(160deg, #fef6e4 0%, #dceefa 100%);
+      text-align: center;
+    }
+
+    .message-card {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      line-height: .5;
+      color: var(--blush-dark);
+      opacity: .6;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .message-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      line-height: 1.9;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .message-text strong {
+      font-style: normal;
+      color: #3a7ca5;
+    }
+
+    .message-sig {
+      margin-top: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    /* ── SURPRISE ── */
+    #surprise { background: var(--white); text-align: center; }
+
+    .surprise-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1rem 2.6rem;
+      border-radius: 50px;
+      border: 2px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .3s;
+      letter-spacing: .05em;
+    }
+
+    .surprise-btn:hover {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(201,168,76,.35);
+      transform: translateY(-2px);
+    }
+
+    .surprise-reveal {
+      display: none;
+      margin-top: 2.5rem;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+
+    .surprise-reveal.open { display: block; }
+    .surprise-reveal.visible { opacity: 1; }
+
+    .surprise-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #dceefa, #fef6e4);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--blush-dark);
+      box-shadow: 0 10px 40px rgba(58,124,165,.15);
+    }
+
+    .hearts-burst { font-size: 2.5rem; letter-spacing: .4rem; margin-bottom: 1rem; animation: pulse 1.2s infinite; }
+
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+    .surprise-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* ── DANCE VIDEO ── */
+    #video { background: #f4f9fd; text-align: center; }
+
+    .video-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 12px 48px rgba(30,58,82,.18);
+      display: block;
+    }
+
+    .video-caption {
+      margin-top: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .9rem;
+    }
+
+    footer span { color: #7aabcc; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+      .about-card { padding: 2rem 1.4rem; }
+      .timeline { padding-left: 1.2rem; }
+      .timeline-item { padding-left: 2rem; }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-petals" id="petals"></div>
+
+  <p class="hero-badge">April 22, 2026 &nbsp;·&nbsp; A day as special as you</p>
+
+  <h1>Happy Birthday,<br /><span>Ravali</span> ❤️</h1>
+  <p>Celebrating you — today, tomorrow, and always.</p>
+  <a href="#story" class="hero-btn">Our Story</a>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section id="story">
+  <span class="section-label">How it all began</span>
+  <h2 class="section-title">Our Story</h2>
+  <div class="section-line"></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">☕</div>
+      <div class="timeline-date">January 29, 2022</div>
+      <div class="timeline-title">The Day We Met</div>
+      <p class="timeline-desc">Every great love story has a beginning — ours started on this day. The moment I met you, something shifted. I didn't know it yet, but my life was about to change forever.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">💍</div>
+      <div class="timeline-date">February 5, 2022</div>
+      <div class="timeline-title">She Said Yes</div>
+      <p class="timeline-desc">You put on the ring and made me the happiest man alive. Our engagement wasn't just a promise — it was the moment I knew without any doubt that you were the one I wanted forever with.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🌸</div>
+      <div class="timeline-date">February 16, 2022</div>
+      <div class="timeline-title">The Day I Married My Best Friend</div>
+      <p class="timeline-desc">Just weeks after we met, we chose each other — for life. You became my wife, my partner, my home. That day I made a promise to you, and every single day since, I've meant it.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">😉</div>
+      <div class="timeline-date">February 20, 2022</div>
+      <div class="timeline-title">My Favorite Day 😉</div>
+      <p class="timeline-desc">Some days are just… special. You know why. And so do I. 😉</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">✨</div>
+      <div class="timeline-date">Every Day Since</div>
+      <div class="timeline-title">Still Falling, Still Growing</div>
+      <p class="timeline-desc">Chicago evenings, Vermont roads, New Hampshire winters — every adventure we've shared has only made me love you more. This is just the beginning of everything we're going to build together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT HER ── -->
+<section id="about">
+  <span class="section-label">The woman I admire</span>
+  <h2 class="section-title">About Ravali</h2>
+  <div class="section-line"></div>
+
+  <div class="about-card fade-in">
+    <div class="about-icon">🦷</div>
+    <h3>Dr. Ravali — a healer of smiles</h3>
+    <p>
+      You chose a profession that requires both precision and compassion — and you bring both, every single day.
+      As a dentist, you give people something priceless: the confidence to smile. But what your patients don't know
+      is that you do the same for me, every morning, just by being you.
+      <br /><br />
+      You are hardworking in ways that humble me. You push through long days without complaint, you care deeply
+      about the people around you, and somehow you still find room to love me the way you do. That is no small thing.
+    </p>
+    <div class="traits">
+      <span class="trait">🌸 Caring</span>
+      <span class="trait">💪 Hardworking</span>
+      <span class="trait">😊 Brings smiles</span>
+      <span class="trait">🧠 Brilliant mind</span>
+      <span class="trait">❤️ Big heart</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery">
+  <span class="section-label">Moments frozen in time</span>
+  <h2 class="section-title">Our Photos</h2>
+  <div class="section-line"></div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/wedding.jpeg" alt="Wedding" loading="lazy" />
+      <div class="gallery-overlay"><span>Wedding Day 💍</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/bride-to-be.jpeg" alt="Bride to Be" loading="lazy" />
+      <div class="gallery-overlay"><span>Bride to Be 👰</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/engagment.heic" alt="Engagement" loading="lazy" />
+      <div class="gallery-overlay"><span>Engagement ✨</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first gift.jpeg" alt="First Gift" loading="lazy" />
+      <div class="gallery-overlay"><span>First Gift 🎁</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first lunch.heic" alt="First Lunch" loading="lazy" />
+      <div class="gallery-overlay"><span>First Lunch ☕</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first temple.jpeg" alt="First Temple" loading="lazy" />
+      <div class="gallery-overlay"><span>First Temple Visit 🙏</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first trip chicago.jpeg" alt="Chicago Trip" loading="lazy" />
+      <div class="gallery-overlay"><span>Chicago 🌆</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first drive in chicago.jpeg" alt="Drive in Chicago" loading="lazy" />
+      <div class="gallery-overlay"><span>Late Night Drive 🚗</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Car.jpeg" alt="Car" loading="lazy" />
+      <div class="gallery-overlay"><span>On the Road 🛣️</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Boston.JPG" alt="Boston" loading="lazy" />
+      <div class="gallery-overlay"><span>Boston 🦞</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Vermont.JPG" alt="Vermont" loading="lazy" />
+      <div class="gallery-overlay"><span>Vermont 🍂</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Vermont-2.JPG" alt="Vermont 2" loading="lazy" />
+      <div class="gallery-overlay"><span>Vermont, Again 🍁</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/NewHampshire.JPG" alt="New Hampshire" loading="lazy" />
+      <div class="gallery-overlay"><span>New Hampshire ⛰️</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/NH-2.JPG" alt="New Hampshire 2" loading="lazy" />
+      <div class="gallery-overlay"><span>New Hampshire Trails 🌲</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/snow.jpeg" alt="Snow" loading="lazy" />
+      <div class="gallery-overlay"><span>Snowy Days ❄️</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/love.jpeg" alt="Love" loading="lazy" />
+      <div class="gallery-overlay"><span>Us ❤️</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Feb 20th.jpeg" alt="Feb 20th" loading="lazy" />
+      <div class="gallery-overlay"><span>Our Favorite Day 😉</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Engagement ring .jpg" alt="Engagement Ring" loading="lazy" />
+      <div class="gallery-overlay"><span>The Ring 💍</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/engagement save the date.JPG" alt="Save the Date" loading="lazy" />
+      <div class="gallery-overlay"><span>Save the Date 📅</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/wedding invitation.jpg" alt="Wedding Invitation" loading="lazy" />
+      <div class="gallery-overlay"><span>Wedding Invitation 💌</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/haldi day.jpg" alt="Haldi Day" loading="lazy" />
+      <div class="gallery-overlay"><span>Haldi Day 💛</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Tieing the knot.jpg" alt="Tying the Knot" loading="lazy" />
+      <div class="gallery-overlay"><span>Tying the Knot 🪢</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/First rose flowers 02-08-2022.jpg" alt="First Roses" loading="lazy" />
+      <div class="gallery-overlay"><span>First Roses 🌹</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/Your cookingin my home.jpg" alt="Cooking Together" loading="lazy" />
+      <div class="gallery-overlay"><span>Cooking Together 👩‍🍳</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first birthday in usa.jpg" alt="First Birthday in USA" loading="lazy" />
+      <div class="gallery-overlay"><span>First Birthday in USA 🎂</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/first birthday in usa-2.jpg" alt="First Birthday in USA" loading="lazy" />
+      <div class="gallery-overlay"><span>Birthday Celebration 🥳</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="photos/butterfly.jpg" alt="Butterfly" loading="lazy" />
+      <div class="gallery-overlay"><span>Butterfly 🦋</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DANCE VIDEO ── -->
+<section id="video">
+  <span class="section-label">A moment worth replaying</span>
+  <h2 class="section-title">Our Dance 💃🕺</h2>
+  <div class="section-line"></div>
+
+  <div class="video-wrap fade-in">
+    <video controls playsinline poster="">
+      <source src="photos/dance video.MP4" type="video/mp4" />
+      Your browser doesn't support video playback.
+    </video>
+    <p class="video-caption">Every time I watch this, I fall in love all over again. 🎶</p>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ── LOVE MESSAGE ── -->
+<section id="message">
+  <span class="section-label">From my heart to yours</span>
+  <h2 class="section-title">What I Need You to Know</h2>
+  <div class="section-line"></div>
+
+  <div class="message-card fade-in">
+    <span class="quote-mark">"</span>
+    <p class="message-text">
+      Ravali, there's something I haven't said nearly enough — and today, on your birthday,
+      I want to change that.<br /><br />
+
+      <strong>I love you.</strong> More than I know how to show. More than my actions sometimes reflect.
+      I know I don't always treat you the way you deserve, and I carry that. But I want you to know —
+      deep in places I don't always find words for — <strong>you are the queen of my heart.</strong>
+      Every single day.<br /><br />
+
+      You may not fully understand how much you mean to me, but I hope one day you feel it the way
+      I do. You've walked beside me through my highest moments and my lowest ones. You've been patient
+      when I didn't deserve it, and loving when I needed it most.<br /><br />
+
+      <strong>Thank you.</strong> For everything. For being there. For choosing me, still.<br /><br />
+
+      I promise you — I am working to become the man you deserve. Your dreams are not just yours.
+      They're mine too. And I will spend every day making sure we get there — together.
+    </p>
+    <p class="message-sig">— With all my love, always. ❤️</p>
+  </div>
+</section>
+
+<!-- ── SURPRISE ── -->
+<section id="surprise">
+  <span class="section-label">A little something extra</span>
+  <h2 class="section-title">One More Thing...</h2>
+  <div class="section-line"></div>
+
+  <button class="surprise-btn" onclick="revealSurprise()">
+    ✨ Click for a surprise ❤️
+  </button>
+
+  <div class="surprise-reveal" id="surpriseReveal">
+    <div class="surprise-card">
+      <div class="hearts-burst">❤️ 🌸 ❤️</div>
+      <p>
+        Happy Birthday, my love.<br /><br />
+        On this day, I just want you to close your eyes for a moment and know —
+        somewhere out there is a person who thinks about you every day,
+        who is proud of every step you take,
+        and who would choose you all over again.<br /><br />
+        That person is me. Always has been. Always will be.<br /><br />
+        <strong>You are so deeply loved, Ravali. 🌹</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Made with <span>❤️</span> for the most wonderful woman I know.</p>
+  <p style="margin-top:.5rem; font-size:.8rem; opacity:.6;">Happy Birthday, Ravali &nbsp;·&nbsp; 2026</p>
+</footer>
+
+<script>
+  // Falling petals
+  const petalsContainer = document.getElementById('petals');
+  const symbols = ['🌸', '🌺', '❤️', '✨', '🌹'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.textContent = symbols[i % symbols.length];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.fontSize = (.8 + Math.random() * 1.2) + 'rem';
+    petalsContainer.appendChild(p);
+  }
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.timeline-item, .fade-in').forEach(el => observer.observe(el));
+
+  // Lightbox
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Surprise reveal
+  function revealSurprise() {
+    const el = document.getElementById('surpriseReveal');
+    el.classList.add('open');
+    setTimeout(() => el.classList.add('visible'), 30);
+    document.querySelector('.surprise-btn').style.display = 'none';
+  }
+</script>
+</body>
+</html>
