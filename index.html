@@ -482,6 +482,36 @@
       font-style: italic;
     }
 
+    /* ── GALLERY CHAPTERS ── */
+    .gallery-chapter { margin-bottom: 3.5rem; }
+
+    .chapter-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chapter-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blush-dark), transparent);
+    }
+
+    .chapter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--blue);
+      white-space: nowrap;
+      letter-spacing: .04em;
+    }
+
+    .gallery-item--tall { aspect-ratio: 3/4; }
+
     /* ── DANCE VIDEO ── */
     #video { background: #f4f9fd; text-align: center; }
 
@@ -504,6 +534,367 @@
       font-size: 1.05rem;
       color: var(--text-light);
     }
+
+    /* ── CAKE (TOP VIEW) ── */
+    .cake-section { margin: 3rem auto 0; text-align: center; }
+
+    .cake-hint {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .95rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .cake-top-view {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .cake-surface {
+      position: absolute;
+      top: 28px; left: 28px; right: 28px; bottom: 28px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #ffb3c6 0deg, #ffd6e0 40deg, #ffe8d6 80deg,
+        #fff3cd 120deg, #d4f0c0 160deg, #c8e6f5 200deg,
+        #e0d4f5 240deg, #ffd6e0 280deg, #ffb3c6 320deg, #ffd6e0 360deg
+      );
+      box-shadow:
+        0 0 0 6px #fff,
+        0 0 0 10px #ffd6e0,
+        0 8px 32px rgba(255,100,150,.25);
+      overflow: hidden;
+    }
+
+    .cake-frosting-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,.55);
+    }
+    .r1 { inset: 14px; }
+    .r2 { inset: 36px; }
+
+    .cake-center-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .78rem;
+      color: #c0526a;
+      text-align: center;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+
+    /* Candles positioned around the cake in a pentagon */
+    .cake-candle {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 26px;
+      transform: translateX(-50%);
+      transition: filter .2s;
+    }
+    .cake-candle:hover { filter: brightness(1.15); }
+
+    /* Pentagon positions: top, upper-right, lower-right, lower-left, upper-left */
+    .c1 { left: 50%;  top: 0px;   }
+    .c2 { left: 88%;  top: 52px;  }
+    .c3 { left: 73%;  top: 172px; }
+    .c4 { left: 27%;  top: 172px; }
+    .c5 { left: 12%;  top: 52px;  }
+
+    .cb {
+      width: 11px;
+      height: 26px;
+      border-radius: 4px 4px 2px 2px;
+      position: relative;
+    }
+    .cb::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 6px;
+      background: #333;
+      border-radius: 1px;
+    }
+
+    .cflame {
+      position: relative;
+      width: 18px;
+      height: 28px;
+      margin-bottom: 1px;
+    }
+
+    .cflame .fo {
+      position: absolute;
+      inset: 0;
+      border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+      animation: cFlicker .45s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+
+    .cflame .fi {
+      position: absolute;
+      bottom: 4px; left: 50%;
+      transform: translateX(-50%);
+      width: 9px; height: 14px;
+      background: radial-gradient(ellipse at 50% 80%, #fff9c4 0%, #ffe066 100%);
+      border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+      opacity: .9;
+    }
+
+    .c1 .fo { background: radial-gradient(ellipse at 50% 70%, #ffe066 0%, #ff6a00 55%, #cc2200 100%); box-shadow: 0 0 10px 4px rgba(255,100,0,.4); }
+    .c2 .fo { background: radial-gradient(ellipse at 50% 70%, #fff59d 0%, #a5d6a7 50%, #388e3c 100%); box-shadow: 0 0 10px 4px rgba(50,180,80,.35); }
+    .c3 .fo { background: radial-gradient(ellipse at 50% 70%, #ffe066 0%, #ce93d8 55%, #7b1fa2 100%); box-shadow: 0 0 10px 4px rgba(150,50,200,.35); }
+    .c4 .fo { background: radial-gradient(ellipse at 50% 70%, #fff9c4 0%, #4dd0e1 55%, #0277bd 100%); box-shadow: 0 0 10px 4px rgba(50,150,220,.35); }
+    .c5 .fo { background: radial-gradient(ellipse at 50% 70%, #ffe066 0%, #f06292 55%, #c2185b 100%); box-shadow: 0 0 10px 4px rgba(220,50,120,.35); }
+
+    @keyframes cFlicker {
+      0%   { transform: skewX(6deg) scaleY(1) scaleX(.9); }
+      33%  { transform: skewX(-8deg) scaleY(.88) scaleX(1.05); }
+      66%  { transform: skewX(4deg) scaleY(1.06) scaleX(.95); }
+      100% { transform: skewX(-5deg) scaleY(.94) scaleX(1.02); }
+    }
+
+    .cflame.out .fo, .cflame.out .fi { opacity: 0; transition: opacity .35s; }
+    .cflame.out::after {
+      content: '💨';
+      position: absolute;
+      top: -12px; left: -4px;
+      font-size: 15px;
+      animation: smokeUp .8s ease-out forwards;
+    }
+    @keyframes smokeUp {
+      0%   { opacity: 1; transform: translateY(0) scale(.8); }
+      100% { opacity: 0; transform: translateY(-28px) scale(1.4); }
+    }
+
+    .wish-msg {
+      margin-top: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #c0526a;
+      min-height: 1.4rem;
+    }
+
+    /* ── MAGIC CANDLE ── */
+    .magic-candle {
+      position: absolute;
+      left: 50%; top: 62px;
+      transform: translateX(-50%);
+      z-index: 12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 36px;
+      filter: drop-shadow(0 0 8px rgba(255,200,0,.6));
+      transition: filter .3s;
+    }
+    .magic-candle:hover { filter: drop-shadow(0 0 16px rgba(255,200,0,.9)); }
+
+    .magic-body {
+      width: 15px; height: 32px;
+      border-radius: 5px 5px 3px 3px;
+      background: linear-gradient(135deg,#ffd700,#ff9500 33%,#ff69b4 66%,#a855f7);
+      background-size: 200% 200%;
+      animation: rainbowShift 1.8s linear infinite;
+      position: relative;
+    }
+    .magic-body::before {
+      content:'';
+      position:absolute; top:0; left:50%;
+      transform:translateX(-50%);
+      width:3px; height:7px;
+      background:#444; border-radius:1px;
+    }
+    @keyframes rainbowShift {
+      0%{background-position:0% 0%} 100%{background-position:200% 200%}
+    }
+
+    .magic-flame {
+      position: relative;
+      width: 26px; height: 40px;
+      margin-bottom: 2px;
+    }
+    .mf-outer {
+      position: absolute; inset: 0;
+      border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+      background: conic-gradient(#f00,#ff9900,#ff0,#0f0,#09f,#90f,#f00);
+      animation: hueSpin 1s linear infinite, cFlicker .4s ease-in-out infinite alternate;
+      transform-origin: bottom center;
+      box-shadow: 0 0 16px 6px rgba(255,180,0,.5);
+    }
+    @keyframes hueSpin { to { filter: hue-rotate(360deg); } }
+
+    .mf-inner {
+      position: absolute;
+      bottom: 5px; left: 50%;
+      transform: translateX(-50%);
+      width: 13px; height: 20px;
+      background: radial-gradient(ellipse at 50% 80%, #fff 0%, #fffde7 100%);
+      border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+    }
+    .mf-star {
+      position: absolute;
+      top: -10px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: #ffd700;
+      animation: starSpin 1.2s linear infinite;
+      text-shadow: 0 0 6px #fff;
+    }
+    @keyframes starSpin { to { transform: translateX(-50%) rotate(360deg); } }
+
+    .magic-label {
+      font-size: 9px;
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-top: 3px;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .magic-flame.explode {
+      animation: magicBurst .8s ease-out forwards !important;
+    }
+    @keyframes magicBurst {
+      0%  { transform: scale(1); opacity: 1; }
+      50% { transform: scale(4); opacity: .8; }
+      100%{ transform: scale(8); opacity: 0; }
+    }
+
+    /* ── BIRTHDAY REVEAL ── */
+    .bday-reveal {
+      display: none; opacity: 0;
+      transition: opacity .6s;
+      margin-top: 2rem;
+    }
+    .bday-reveal.show  { display: block; }
+    .bday-reveal.visible { opacity: 1; }
+
+    .bday-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 6vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.35;
+      background: linear-gradient(90deg,#f00,#ff9900,#ffd700,#0c0,#09f,#a0f,#f00);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bdayRainbow 2s linear infinite;
+    }
+    @keyframes bdayRainbow {
+      0%  { background-position: 0% 50%; }
+      100%{ background-position: 300% 50%; }
+    }
+
+    /* ── MEMORY MATCH ── */
+    .game-sub { font-size:.88rem; color:var(--text-light); margin-bottom:1rem; }
+    .game-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; font-size:.9rem; color:var(--text-light); }
+    .reset-btn { background:none; border:1px solid var(--blush-dark); border-radius:20px; padding:.3rem .9rem; font-size:.82rem; color:var(--blue); cursor:pointer; font-family:'Poppins',sans-serif; transition:all .25s; }
+    .reset-btn:hover { background:var(--blue-pale); }
+
+    .card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; }
+    .card { aspect-ratio:1; perspective:600px; cursor:pointer; }
+    .card-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform .45s ease; border-radius:12px; }
+    .card.flipped .card-inner,
+    .card.matched .card-inner { transform:rotateY(180deg); }
+    .card-front,.card-back { position:absolute; inset:0; border-radius:12px; backface-visibility:hidden; display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
+    .card-front { background:linear-gradient(135deg,var(--blue),#5ba8d4); box-shadow:0 3px 10px rgba(58,124,165,.25); font-size:1.4rem; color:rgba(255,255,255,.4); }
+    .card-back  { background:linear-gradient(135deg,#dceefa,#fef6e4); transform:rotateY(180deg); box-shadow:0 3px 10px rgba(58,124,165,.15); border:2px solid var(--blush-dark); }
+    .card.matched .card-back { background:linear-gradient(135deg,#d4f0e0,#e8f8ee); border-color:#7acc99; }
+    .win-msg { margin-top:1.5rem; font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; color:var(--blue); min-height:1.8rem; }
+
+    /* ── MARIO GAME ── */
+    .game-section {
+      margin: 3.5rem auto 0;
+      max-width: 580px;
+      text-align: center;
+    }
+
+    .game-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: .6rem;
+    }
+
+    .game-instructions {
+      background: linear-gradient(135deg, #fff9f0, #f0f8ff);
+      border: 1px solid var(--blush-dark);
+      border-radius: 14px;
+      padding: .9rem 1.2rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .inst-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .35rem .8rem;
+      font-size: .82rem;
+      color: var(--text-light);
+    }
+
+    .inst-grid .inst-item { display: flex; align-items: center; gap: .4rem; }
+    .inst-key {
+      background: var(--text);
+      color: #fff;
+      border-radius: 5px;
+      padding: 1px 6px;
+      font-size: .75rem;
+      font-family: monospace;
+      white-space: nowrap;
+    }
+
+    .canvas-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30,58,82,.2);
+      line-height: 0;
+    }
+
+    #gameCanvas {
+      width: 100%;
+      display: block;
+      background: #87ceeb;
+      cursor: pointer;
+    }
+
+    .mobile-ctrl {
+      display: flex;
+      justify-content: center;
+      gap: .8rem;
+      margin-top: .8rem;
+    }
+
+    .ctrl-btn {
+      padding: .7rem 1.4rem;
+      border-radius: 12px;
+      border: 2px solid var(--blush-dark);
+      background: rgba(255,255,255,.8);
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+      transition: background .15s;
+    }
+    .ctrl-btn:active, .ctrl-btn.pressed { background: var(--blue-pale); }
 
     /* ── FOOTER ── */
     footer {
@@ -638,114 +1029,162 @@
   <h2 class="section-title">Our Photos</h2>
   <div class="section-line"></div>
 
-  <div class="gallery-grid">
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/wedding.jpeg" alt="Wedding" loading="lazy" />
-      <div class="gallery-overlay"><span>Wedding Day 💍</span></div>
+  <!-- Chapter 1: Engagement -->
+  <div class="gallery-chapter">
+    <div class="chapter-label">
+      <span class="chapter-line"></span>
+      <span class="chapter-title">💍 It All Started Here</span>
+      <span class="chapter-line"></span>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/bride-to-be.jpeg" alt="Bride to Be" loading="lazy" />
-      <div class="gallery-overlay"><span>Bride to Be 👰</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/engagment.heic" alt="Engagement" loading="lazy" />
+        <div class="gallery-overlay"><span>The Moment ✨</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Engagement ring .jpg" alt="Engagement Ring" loading="lazy" />
+        <div class="gallery-overlay"><span>The Ring 💍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/First rose flowers 02-08-2022.jpg" alt="First Roses" loading="lazy" />
+        <div class="gallery-overlay"><span>First Roses 🌹</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first gift.jpeg" alt="First Gift" loading="lazy" />
+        <div class="gallery-overlay"><span>First Gift 🎁</span></div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/engagment.heic" alt="Engagement" loading="lazy" />
-      <div class="gallery-overlay"><span>Engagement ✨</span></div>
+  </div>
+
+  <!-- Chapter 2: Pre-Wedding -->
+  <div class="gallery-chapter">
+    <div class="chapter-label">
+      <span class="chapter-line"></span>
+      <span class="chapter-title">🌸 Before We Said I Do</span>
+      <span class="chapter-line"></span>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first gift.jpeg" alt="First Gift" loading="lazy" />
-      <div class="gallery-overlay"><span>First Gift 🎁</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/engagement save the date.JPG" alt="Save the Date" loading="lazy" />
+        <div class="gallery-overlay"><span>Save the Date 📅</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/haldi day.jpg" alt="Haldi Day" loading="lazy" />
+        <div class="gallery-overlay"><span>Haldi Day 💛</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/bride-to-be.jpeg" alt="Bride to Be" loading="lazy" />
+        <div class="gallery-overlay"><span>Bride to Be 👰</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/wedding invitation.jpg" alt="Wedding Invitation" loading="lazy" />
+        <div class="gallery-overlay"><span>Wedding Invitation 💌</span></div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first lunch.heic" alt="First Lunch" loading="lazy" />
-      <div class="gallery-overlay"><span>First Lunch ☕</span></div>
+  </div>
+
+  <!-- Chapter 3: Wedding -->
+  <div class="gallery-chapter">
+    <div class="chapter-label">
+      <span class="chapter-line"></span>
+      <span class="chapter-title">🪢 The Day We Became One</span>
+      <span class="chapter-line"></span>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first temple.jpeg" alt="First Temple" loading="lazy" />
-      <div class="gallery-overlay"><span>First Temple Visit 🙏</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item--tall" onclick="openLightbox(this)">
+        <img src="photos/Tieing the knot.jpg" alt="Tying the Knot" loading="lazy" />
+        <div class="gallery-overlay"><span>Tying the Knot 🪢</span></div>
+      </div>
+      <div class="gallery-item gallery-item--tall" onclick="openLightbox(this)">
+        <img src="photos/wedding.jpeg" alt="Wedding" loading="lazy" />
+        <div class="gallery-overlay"><span>Wedding Day 💍</span></div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first trip chicago.jpeg" alt="Chicago Trip" loading="lazy" />
-      <div class="gallery-overlay"><span>Chicago 🌆</span></div>
+  </div>
+
+  <!-- Chapter 4: Life Together -->
+  <div class="gallery-chapter">
+    <div class="chapter-label">
+      <span class="chapter-line"></span>
+      <span class="chapter-title">🌆 Adventures & Celebrations</span>
+      <span class="chapter-line"></span>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first drive in chicago.jpeg" alt="Drive in Chicago" loading="lazy" />
-      <div class="gallery-overlay"><span>Late Night Drive 🚗</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first lunch.heic" alt="First Lunch" loading="lazy" />
+        <div class="gallery-overlay"><span>First Lunch Together ☕</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first temple.jpeg" alt="First Temple" loading="lazy" />
+        <div class="gallery-overlay"><span>First Temple Visit 🙏</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Your cookingin my home.jpg" alt="Cooking Together" loading="lazy" />
+        <div class="gallery-overlay"><span>Cooking Together 👩‍🍳</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first trip chicago.jpeg" alt="Chicago Trip" loading="lazy" />
+        <div class="gallery-overlay"><span>Chicago Trip 🌆</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first drive in chicago.jpeg" alt="Drive in Chicago" loading="lazy" />
+        <div class="gallery-overlay"><span>Late Night Drive 🚗</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first birthday in usa.jpg" alt="First Birthday in USA" loading="lazy" />
+        <div class="gallery-overlay"><span>First Birthday in USA 🎂</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/first birthday in usa-2.jpg" alt="Birthday Celebration" loading="lazy" />
+        <div class="gallery-overlay"><span>Birthday Celebration 🥳</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/butterfly.jpg" alt="Butterfly" loading="lazy" />
+        <div class="gallery-overlay"><span>Butterfly 🦋</span></div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Car.jpeg" alt="Car" loading="lazy" />
-      <div class="gallery-overlay"><span>On the Road 🛣️</span></div>
+  </div>
+
+  <!-- Chapter 5: Road Trips -->
+  <div class="gallery-chapter">
+    <div class="chapter-label">
+      <span class="chapter-line"></span>
+      <span class="chapter-title">🛣️ Everywhere With You</span>
+      <span class="chapter-line"></span>
     </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Boston.JPG" alt="Boston" loading="lazy" />
-      <div class="gallery-overlay"><span>Boston 🦞</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Vermont.JPG" alt="Vermont" loading="lazy" />
-      <div class="gallery-overlay"><span>Vermont 🍂</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Vermont-2.JPG" alt="Vermont 2" loading="lazy" />
-      <div class="gallery-overlay"><span>Vermont, Again 🍁</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/NewHampshire.JPG" alt="New Hampshire" loading="lazy" />
-      <div class="gallery-overlay"><span>New Hampshire ⛰️</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/NH-2.JPG" alt="New Hampshire 2" loading="lazy" />
-      <div class="gallery-overlay"><span>New Hampshire Trails 🌲</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/snow.jpeg" alt="Snow" loading="lazy" />
-      <div class="gallery-overlay"><span>Snowy Days ❄️</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/love.jpeg" alt="Love" loading="lazy" />
-      <div class="gallery-overlay"><span>Us ❤️</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Feb 20th.jpeg" alt="Feb 20th" loading="lazy" />
-      <div class="gallery-overlay"><span>Our Favorite Day 😉</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Engagement ring .jpg" alt="Engagement Ring" loading="lazy" />
-      <div class="gallery-overlay"><span>The Ring 💍</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/engagement save the date.JPG" alt="Save the Date" loading="lazy" />
-      <div class="gallery-overlay"><span>Save the Date 📅</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/wedding invitation.jpg" alt="Wedding Invitation" loading="lazy" />
-      <div class="gallery-overlay"><span>Wedding Invitation 💌</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/haldi day.jpg" alt="Haldi Day" loading="lazy" />
-      <div class="gallery-overlay"><span>Haldi Day 💛</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Tieing the knot.jpg" alt="Tying the Knot" loading="lazy" />
-      <div class="gallery-overlay"><span>Tying the Knot 🪢</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/First rose flowers 02-08-2022.jpg" alt="First Roses" loading="lazy" />
-      <div class="gallery-overlay"><span>First Roses 🌹</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/Your cookingin my home.jpg" alt="Cooking Together" loading="lazy" />
-      <div class="gallery-overlay"><span>Cooking Together 👩‍🍳</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first birthday in usa.jpg" alt="First Birthday in USA" loading="lazy" />
-      <div class="gallery-overlay"><span>First Birthday in USA 🎂</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/first birthday in usa-2.jpg" alt="First Birthday in USA" loading="lazy" />
-      <div class="gallery-overlay"><span>Birthday Celebration 🥳</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="photos/butterfly.jpg" alt="Butterfly" loading="lazy" />
-      <div class="gallery-overlay"><span>Butterfly 🦋</span></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Car.jpeg" alt="Car" loading="lazy" />
+        <div class="gallery-overlay"><span>On the Road 🛣️</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Boston.JPG" alt="Boston" loading="lazy" />
+        <div class="gallery-overlay"><span>Boston 🦞</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Vermont.JPG" alt="Vermont" loading="lazy" />
+        <div class="gallery-overlay"><span>Vermont 🍂</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Vermont-2.JPG" alt="Vermont 2" loading="lazy" />
+        <div class="gallery-overlay"><span>Vermont, Again 🍁</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/NewHampshire.JPG" alt="New Hampshire" loading="lazy" />
+        <div class="gallery-overlay"><span>New Hampshire ⛰️</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/NH-2.JPG" alt="New Hampshire 2" loading="lazy" />
+        <div class="gallery-overlay"><span>New Hampshire Trails 🌲</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/snow.jpeg" alt="Snow" loading="lazy" />
+        <div class="gallery-overlay"><span>Snowy Days ❄️</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/love.jpeg" alt="Love" loading="lazy" />
+        <div class="gallery-overlay"><span>Us ❤️</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -812,6 +1251,8 @@
   </button>
 
   <div class="surprise-reveal" id="surpriseReveal">
+
+    <!-- Sweet note -->
     <div class="surprise-card">
       <div class="hearts-burst">❤️ 🌸 ❤️</div>
       <p>
@@ -824,6 +1265,75 @@
         <strong>You are so deeply loved, Ravali. 🌹</strong>
       </p>
     </div>
+
+    <!-- Birthday Cake (top view) -->
+    <div class="cake-section">
+      <p class="cake-hint">✨ Click the <strong>magic candle</strong> in the center!</p>
+      <div class="cake-top-view">
+        <div class="cake-surface">
+          <div class="cake-frosting-ring r1"></div>
+          <div class="cake-frosting-ring r2"></div>
+          <div class="cake-center-text">Ravali<br/>❤️</div>
+          <div id="cakeSprinkles"></div>
+        </div>
+        <!-- Side candles (blown out by magic candle click 1) -->
+        <div class="cake-candle c1"><div class="cflame" id="fl0"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ff8a80,#d32f2f)"></div></div>
+        <div class="cake-candle c2"><div class="cflame" id="fl1"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#a5d6a7,#2e7d32)"></div></div>
+        <div class="cake-candle c3"><div class="cflame" id="fl2"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ce93d8,#6a1b9a)"></div></div>
+        <div class="cake-candle c4"><div class="cflame" id="fl3"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#80d8ff,#01579b)"></div></div>
+        <div class="cake-candle c5"><div class="cflame" id="fl4"><div class="fo"></div><div class="fi"></div></div><div class="cb" style="background:linear-gradient(#ffcc80,#e65100)"></div></div>
+        <!-- MAGIC CANDLE (center) -->
+        <div class="magic-candle" id="magicCandle" onclick="magicCandleClick()">
+          <div class="magic-flame" id="magicFlame">
+            <div class="mf-outer"></div>
+            <div class="mf-inner"></div>
+            <span class="mf-star">✦</span>
+          </div>
+          <div class="magic-body"></div>
+          <span class="magic-label">✨Magic✨</span>
+        </div>
+      </div>
+      <p class="wish-msg" id="wishMsg"></p>
+      <!-- Birthday reveal -->
+      <div class="bday-reveal" id="bdayReveal">
+        <div class="bday-text" id="bdayText"></div>
+      </div>
+    </div>
+
+    <!-- Mario-style Game -->
+    <div class="game-section">
+      <h3 class="game-title">🕹️ Save Princess Ravali!</h3>
+      <div class="game-instructions">
+        <div class="inst-grid">
+          <div class="inst-item"><span class="inst-key">← →</span> Move</div>
+          <div class="inst-item"><span class="inst-key">↑ Space</span> Jump</div>
+          <div class="inst-item"><span>💋</span> Kiss Power → Double Jump!</div>
+          <div class="inst-item"><span>❤️</span> Collect Hearts</div>
+          <div class="inst-item" style="grid-column:1/-1"><span>🏰</span> Reach Ravali's castle to win! Fall = restart from checkpoint.</div>
+        </div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="gameCanvas" width="560" height="300"></canvas>
+      </div>
+      <div class="mobile-ctrl">
+        <button class="ctrl-btn" id="btnLeft">◀</button>
+        <button class="ctrl-btn" id="btnJump">⬆ JUMP</button>
+        <button class="ctrl-btn" id="btnRight">▶</button>
+      </div>
+    </div>
+
+    <!-- Memory Match Game -->
+    <div class="game-section" style="margin-top:3rem">
+      <h3 class="game-title">💝 Memory Match</h3>
+      <p class="game-sub">Find all matching pairs — can you do it in under 20 moves?</p>
+      <div class="game-meta">
+        <span>Moves: <strong id="moveCount">0</strong></span>
+        <button class="reset-btn" onclick="initMemGame()">Restart 🔄</button>
+      </div>
+      <div class="card-grid" id="cardGrid"></div>
+      <div class="win-msg" id="winMsg"></div>
+    </div>
+
   </div>
 </section>
 
@@ -885,6 +1395,724 @@
     el.classList.add('open');
     setTimeout(() => el.classList.add('visible'), 30);
     document.querySelector('.surprise-btn').style.display = 'none';
+    setTimeout(() => { spawnSprinkles(); startGameLoop(); initMemGame(); }, 400);
+  }
+
+  // ── CAKE (TOP VIEW) ──
+  let cakeDone = false;
+  let magicClicks = 0;
+
+  function blowCandle(i) {} // side candles now controlled by magic candle
+
+  function magicCandleClick() {
+    magicClicks++;
+
+    if (magicClicks === 1) {
+      // Blow all 5 side candles with a staggered puff
+      [0,1,2,3,4].forEach((i, idx) => {
+        setTimeout(() => {
+          const fl = document.getElementById('fl' + i);
+          if (fl) fl.classList.add('out');
+        }, idx * 120);
+      });
+      cakeDone = true;
+      document.getElementById('wishMsg').textContent = '✨ All gone! Now click the magic candle once more…';
+
+    } else if (magicClicks === 2) {
+      // Magic candle explodes and birthday message appears
+      const mf = document.getElementById('magicFlame');
+      mf.classList.add('explode');
+      launchConfetti();
+
+      setTimeout(() => {
+        document.getElementById('magicCandle').style.visibility = 'hidden';
+        const rev = document.getElementById('bdayReveal');
+        rev.classList.add('show');
+        requestAnimationFrame(() => requestAnimationFrame(() => rev.classList.add('visible')));
+        typeReveal('bdayText', 'Happy Birthday\nChakkani Chukka! 🌹❤️');
+      }, 700);
+
+      document.getElementById('wishMsg').textContent = '🎊 Your wish is coming true! 🎊';
+    }
+  }
+
+  function typeReveal(id, text) {
+    const el = document.getElementById(id);
+    el.textContent = '';
+    let i = 0;
+    const iv = setInterval(() => {
+      el.textContent += text[i++];
+      if (i >= text.length) clearInterval(iv);
+    }, 75);
+  }
+
+  function spawnSprinkles() {
+    const s = document.getElementById('cakeSprinkles');
+    if (!s) return;
+    const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c77dff','#ff9f1c'];
+    for (let i = 0; i < 30; i++) {
+      const d = document.createElement('div');
+      const rot = Math.random() * 180;
+      d.style.cssText = `position:absolute;width:${3+Math.random()*3}px;height:${7+Math.random()*4}px;
+        background:${colors[i%colors.length]};border-radius:2px;
+        top:${10+Math.random()*80}%;left:${5+Math.random()*90}%;
+        transform:rotate(${rot}deg);opacity:.85;`;
+      s.appendChild(d);
+    }
+  }
+
+  function launchConfetti() {
+    const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c77dff','#ff9f1c','#fff','#c9a84c'];
+    const shapes = ['50%','3px'];
+    for (let i = 0; i < 100; i++) {
+      const d = document.createElement('div');
+      const size = 6 + Math.random() * 6;
+      const rot = Math.random() * 720;
+      d.style.cssText = `position:fixed;width:${size}px;height:${size}px;
+        border-radius:${shapes[i%2]};background:${colors[i%colors.length]};
+        left:${Math.random()*100}vw;top:-12px;opacity:1;z-index:9999;
+        animation:cFall ${1.8+Math.random()*2}s ${Math.random()*0.8}s ease-out forwards;`;
+      document.body.appendChild(d);
+      setTimeout(() => d.remove(), 5000);
+    }
+  }
+  const _cs = document.createElement('style');
+  _cs.textContent = `@keyframes cFall{to{transform:translateY(105vh) rotate(720deg);opacity:0}}`;
+  document.head.appendChild(_cs);
+
+  // ── MARIO GAME ──
+  (function() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    // canvas is 560×300 (set in HTML), CSS scales it
+
+    const GY = 244;        // ground y
+    const GRAV = 0.52;
+    const SPD = 3.8;
+    const JUMP = -11.5;
+    const LEVEL_W = 2900;
+
+    // ── Input ──
+    const K = {};
+    const mkeys = { left:false, right:false, jump:false };
+    window.addEventListener('keydown', e => {
+      K[e.code] = true;
+      if (['ArrowUp','ArrowLeft','ArrowRight','Space'].includes(e.code) &&
+          document.getElementById('surprise').getBoundingClientRect().top < window.innerHeight)
+        e.preventDefault();
+    });
+    window.addEventListener('keyup', e => { K[e.code] = false; });
+
+    // Mobile buttons
+    function bindBtn(id, key) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      ['pointerdown','touchstart'].forEach(ev => btn.addEventListener(ev, e => { e.preventDefault(); mkeys[key]=true; }, {passive:false}));
+      ['pointerup','pointerleave','touchend'].forEach(ev => btn.addEventListener(ev, () => mkeys[key]=false));
+    }
+    bindBtn('btnLeft','left'); bindBtn('btnRight','right'); bindBtn('btnJump','jump');
+
+    // ── Level ──
+    const GROUND = [[0,320],[380,640],[700,1000],[1060,1500],[1570,1840],[1910,2230],[2300,2800]];
+    const PLATS  = [
+      {x:140,y:178,w:80},{x:400,y:162,w:90},{x:545,y:138,w:82},
+      {x:735,y:172,w:86},{x:878,y:146,w:80},{x:1075,y:172,w:85},
+      {x:1205,y:136,w:90},{x:1378,y:162,w:82},{x:1565,y:150,w:88},
+      {x:1714,y:130,w:84},{x:1925,y:162,w:82},{x:2075,y:138,w:88},
+      {x:2220,y:168,w:82},{x:2378,y:144,w:90},{x:2538,y:124,w:82},
+    ];
+    const HEART_POS = [
+      {x:162,y:150},{x:268,y:222},{x:420,y:136},{x:566,y:110},
+      {x:752,y:145},{x:894,y:118},{x:1090,y:145},{x:1222,y:108},
+      {x:1394,y:135},{x:1490,y:222},{x:1582,y:122},{x:1730,y:102},
+      {x:1940,y:135},{x:2092,y:110},{x:2394,y:118},
+    ];
+    const KISS_POS = {x:561, y:108};  // on platform x:545
+    const CASTLE   = {x:2650, y:GY-172, w:112, h:172};
+    const CHECKPOINT_X = 1060;
+
+    // ── State ──
+    let cam, score, kissActive, kissTimer, jumpUsed, jumpConsumed;
+    let hearts, kissObj, player, gameState, frame, checkpointReached;
+
+    function initLevel() {
+      hearts = HEART_POS.map(h => ({...h, got:false}));
+      kissObj = {...KISS_POS, got:false};
+      cam=0; score=0; kissActive=false; kissTimer=0;
+      frame=0; checkpointReached=false; gameState='idle';
+    }
+
+    function spawnPlayer(atCheckpoint) {
+      player = {
+        x: atCheckpoint ? CHECKPOINT_X+20 : 60,
+        y: GY-40, w:32, h:38,
+        vx:0, vy:0, onGround:false,
+        doubleAvail:false,
+      };
+      jumpConsumed=false; jumpUsed=false;
+    }
+
+    // ── Drawing ──
+    function em(e,x,y,sz) {
+      ctx.font = sz+'px serif';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(e,x,y);
+    }
+
+    function drawBg() {
+      // Sky
+      const g=ctx.createLinearGradient(0,0,0,canvas.height);
+      g.addColorStop(0,'#5bb8f5'); g.addColorStop(1,'#c8ecff');
+      ctx.fillStyle=g; ctx.fillRect(0,0,canvas.width,canvas.height);
+      // Sun
+      ctx.shadowColor='#ffe066'; ctx.shadowBlur=20;
+      ctx.fillStyle='#ffe066';
+      ctx.beginPath(); ctx.arc(canvas.width-44, 36, 20, 0, Math.PI*2); ctx.fill();
+      ctx.shadowBlur=0;
+      // Clouds (parallax 0.25)
+      ctx.fillStyle='rgba(255,255,255,.88)';
+      [[120,48,28],[290,32,22],[460,56,26],[680,38,20],[900,50,24],
+       [1150,34,22],[1380,52,26],[1650,36,20],[1900,44,24],[2200,30,22]].forEach(([cx,cy,r])=>{
+        const sx = ((cx - cam*0.25) % (canvas.width+100) + canvas.width+100) % (canvas.width+100) - 50;
+        ctx.beginPath();
+        ctx.arc(sx,cy,r,0,Math.PI*2);
+        ctx.arc(sx+r*1.4,cy-r*.35,r*.8,0,Math.PI*2);
+        ctx.arc(sx+r*2.4,cy,r*.9,0,Math.PI*2);
+        ctx.fill();
+      });
+    }
+
+    function drawGround() {
+      GROUND.forEach(([x1,x2])=>{
+        const sx=x1-cam, sw=x2-x1;
+        if(sx>canvas.width||sx+sw<0) return;
+        ctx.fillStyle='#4a8c2a'; ctx.fillRect(sx,GY,sw,canvas.height-GY);
+        ctx.fillStyle='#6dbf3e'; ctx.fillRect(sx,GY,sw,9);
+        // dirt texture lines
+        ctx.fillStyle='#3a6b1a';
+        for(let dx=0;dx<sw;dx+=24) ctx.fillRect(sx+dx,GY+12,12,3);
+      });
+    }
+
+    function drawPlats() {
+      PLATS.forEach(p=>{
+        const sx=p.x-cam;
+        if(sx>canvas.width||sx+p.w<0) return;
+        // wood platform look
+        ctx.fillStyle='#c8783a'; ctx.fillRect(sx,p.y,p.w,16);
+        ctx.fillStyle='#e8985a'; ctx.fillRect(sx,p.y,p.w,5);
+        ctx.fillStyle='#a05820'; ctx.fillRect(sx,p.y+13,p.w,3);
+        // planks
+        ctx.fillStyle='rgba(0,0,0,.08)';
+        for(let dx=0;dx<p.w;dx+=16) ctx.fillRect(sx+dx,p.y,1,16);
+      });
+    }
+
+    function heartPath(cx, cy, s) {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy + s*.38);
+      ctx.bezierCurveTo(cx, cy-.05*s, cx-s*.58, cy-.05*s, cx-s*.58, cy+s*.24);
+      ctx.bezierCurveTo(cx-s*.58, cy+s*.68, cx, cy+s*.92, cx, cy+s*.92);
+      ctx.bezierCurveTo(cx, cy+s*.92, cx+s*.58, cy+s*.68, cx+s*.58, cy+s*.24);
+      ctx.bezierCurveTo(cx+s*.58, cy-.05*s, cx, cy-.05*s, cx, cy+s*.38);
+      ctx.closePath();
+    }
+
+    function drawHearts() {
+      hearts.forEach(h=>{
+        if(h.got) return;
+        const sx=h.x-cam;
+        if(sx<-24||sx>canvas.width+24) return;
+        const bob=Math.sin(frame*.055+h.x)*3;
+        const cy=h.y+bob;
+        const s=13;
+        // strong glow
+        ctx.shadowColor='#cc0033'; ctx.shadowBlur=12;
+        ctx.fillStyle='#ee1133';
+        heartPath(sx, cy-s*.9, s);
+        ctx.fill();
+        // bright top highlight
+        ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,.38)';
+        ctx.beginPath();
+        ctx.ellipse(sx-s*.14, cy-s*.72, s*.18, s*.12, -.45, 0, Math.PI*2);
+        ctx.fill();
+        // dark outline for crispness
+        ctx.strokeStyle='rgba(160,0,30,.55)'; ctx.lineWidth=1;
+        heartPath(sx, cy-s*.9, s);
+        ctx.stroke();
+      });
+    }
+
+    function drawKiss() {
+      if(kissObj.got) return;
+      const sx=kissObj.x-cam;
+      if(sx<-20||sx>canvas.width+20) return;
+      const bob=Math.sin(frame*.04+50)*4;
+      ctx.shadowColor='#ff69b4'; ctx.shadowBlur=14;
+      em('💋',sx,kissObj.y+bob,22);
+      ctx.shadowBlur=0;
+      // label
+      ctx.fillStyle='rgba(255,105,180,.9)';
+      ctx.font='bold 9px Poppins,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.fillText('KISS POWER!',sx,kissObj.y+bob-14);
+    }
+
+    function drawCastle() {
+      const sx=CASTLE.x-cam;
+      if(sx>canvas.width+20||sx+CASTLE.w<-20) return;
+      // walls
+      ctx.fillStyle='#e8b4d8'; ctx.fillRect(sx,CASTLE.y,CASTLE.w,CASTLE.h);
+      // stone lines
+      ctx.fillStyle='rgba(0,0,0,.06)';
+      for(let dy=0;dy<CASTLE.h;dy+=14) ctx.fillRect(sx,CASTLE.y+dy,CASTLE.w,1);
+      for(let dx=0;dx<CASTLE.w;dx+=18) ctx.fillRect(sx+dx,CASTLE.y,1,CASTLE.h);
+      // battlements
+      ctx.fillStyle='#f0c8e8';
+      for(let i=0;i<5;i++) ctx.fillRect(sx+i*24-4,CASTLE.y-16,14,18);
+      // towers
+      ctx.fillStyle='#d090c0';
+      ctx.beginPath(); ctx.arc(sx,CASTLE.y,15,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(sx+CASTLE.w,CASTLE.y,15,0,Math.PI*2); ctx.fill();
+      // gate arch
+      ctx.fillStyle='#7b3f6e';
+      ctx.beginPath();
+      ctx.roundRect(sx+CASTLE.w/2-14,CASTLE.y+CASTLE.h-52,28,52,14);
+      ctx.fill();
+      // flag
+      ctx.strokeStyle='#888'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(sx+CASTLE.w/2,CASTLE.y-16); ctx.lineTo(sx+CASTLE.w/2,CASTLE.y-38); ctx.stroke();
+      ctx.fillStyle='#ff6b6b';
+      ctx.beginPath(); ctx.moveTo(sx+CASTLE.w/2,CASTLE.y-38); ctx.lineTo(sx+CASTLE.w/2+14,CASTLE.y-32); ctx.lineTo(sx+CASTLE.w/2,CASTLE.y-26); ctx.fill();
+      // princess in window
+      const wy=CASTLE.y+28+Math.sin(frame*.05)*3;
+      em('👸',sx+CASTLE.w/2,wy,24);
+      // floating hearts above castle
+      ctx.shadowColor='#ff69b4'; ctx.shadowBlur=6;
+      em('💕',sx+CASTLE.w/2+Math.sin(frame*.04)*6,CASTLE.y-48+Math.sin(frame*.06)*4,18);
+      ctx.shadowBlur=0;
+    }
+
+    function drawPlayer() {
+      const x = player.x - cam;
+      const y = player.y;
+      ctx.save();
+
+      // Kiss glow + orbiting hearts
+      if (kissActive) {
+        ctx.shadowColor='#ff69b4'; ctx.shadowBlur=22;
+        ['❤️','💕'].forEach((h,i)=>{
+          const a=frame*.1+i*Math.PI;
+          em(h, x+16+Math.cos(a)*28, y+20+Math.sin(a)*13, 12);
+        });
+        ctx.shadowBlur=0;
+      }
+
+      // Shoes
+      ctx.fillStyle='#2c1810';
+      ctx.beginPath(); ctx.roundRect(x,   y+34, 14, 7, [3,3,4,4]); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(x+18, y+34, 14, 7, [3,3,4,4]); ctx.fill();
+
+      // Pants (two legs)
+      ctx.fillStyle='#1a3a6e';
+      ctx.fillRect(x+2,  y+22, 12, 14);
+      ctx.fillRect(x+18, y+22, 12, 14);
+      // belt
+      ctx.fillStyle='#0d2244';
+      ctx.fillRect(x, y+22, 32, 3);
+
+      // Shirt body
+      ctx.fillStyle='#e63946';
+      ctx.beginPath(); ctx.roundRect(x, y+12, 32, 12, 3); ctx.fill();
+
+      // Left arm
+      ctx.fillStyle='#e63946';
+      ctx.beginPath(); ctx.roundRect(x-7, y+12, 9, 12, 4); ctx.fill();
+      // Left hand
+      ctx.fillStyle='#f4a261';
+      ctx.beginPath(); ctx.arc(x-3, y+24, 4, 0, Math.PI*2); ctx.fill();
+
+      // Right arm
+      ctx.fillStyle='#e63946';
+      ctx.beginPath(); ctx.roundRect(x+30, y+12, 9, 12, 4); ctx.fill();
+      // Right hand
+      ctx.fillStyle='#f4a261';
+      ctx.beginPath(); ctx.arc(x+35, y+24, 4, 0, Math.PI*2); ctx.fill();
+
+      // Neck
+      ctx.fillStyle='#f4a261';
+      ctx.fillRect(x+12, y+7, 8, 7);
+
+      // Head
+      ctx.fillStyle='#f4a261';
+      ctx.beginPath(); ctx.arc(x+16, y+6, 9, 0, Math.PI*2); ctx.fill();
+
+      // Hair
+      ctx.fillStyle='#2c1810';
+      ctx.beginPath(); ctx.arc(x+16, y+4, 9, Math.PI, 0); ctx.fill();
+      // hair front tuft
+      ctx.beginPath(); ctx.arc(x+16, y-2, 5, Math.PI, 0); ctx.fill();
+
+      // Eye whites
+      ctx.fillStyle='#fff';
+      ctx.beginPath(); ctx.arc(x+11, y+6, 2.5, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x+21, y+6, 2.5, 0, Math.PI*2); ctx.fill();
+      // Pupils
+      ctx.fillStyle='#222';
+      ctx.beginPath(); ctx.arc(x+12, y+6, 1.4, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x+22, y+6, 1.4, 0, Math.PI*2); ctx.fill();
+
+      // Smile
+      ctx.strokeStyle='#8b4513'; ctx.lineWidth=1.3;
+      ctx.beginPath(); ctx.arc(x+16, y+9, 4, .15, Math.PI-.15); ctx.stroke();
+
+      ctx.restore();
+
+      // Kiss badge above head
+      if (kissActive) {
+        ctx.font='13px serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText('💋', x+30, y-6);
+      }
+    }
+
+    function drawHUD() {
+      ctx.fillStyle='rgba(255,255,255,.82)';
+      ctx.beginPath(); ctx.roundRect(8,8,108,28,8); ctx.fill();
+      ctx.fillStyle='#c0526a'; ctx.font='bold 12px Poppins,sans-serif';
+      ctx.textAlign='left'; ctx.textBaseline='middle';
+      ctx.fillText('❤️ '+score+'/'+HEART_POS.length, 16, 22);
+
+      if(kissActive) {
+        ctx.fillStyle='rgba(255,255,255,.82)';
+        ctx.beginPath(); ctx.roundRect(8,42,128,26,8); ctx.fill();
+        ctx.fillStyle='#9b3dad'; ctx.font='bold 11px Poppins,sans-serif';
+        ctx.textAlign='left'; ctx.textBaseline='middle';
+        const s=Math.ceil((480-kissTimer)/60);
+        ctx.fillText('💋 Kiss Power: '+s+'s',14,55);
+      }
+    }
+
+    function drawOverlay(title, sub, hint, bg) {
+      ctx.fillStyle=bg; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff'; ctx.font='bold 22px "Playfair Display",serif';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(title,canvas.width/2,canvas.height/2-36);
+      ctx.font='14px Poppins,sans-serif'; ctx.fillStyle='#ffe066';
+      ctx.fillText(sub,canvas.width/2,canvas.height/2+2);
+      ctx.font='12px Poppins,sans-serif'; ctx.fillStyle='rgba(255,255,255,.7)';
+      ctx.fillText(hint,canvas.width/2,canvas.height/2+30);
+    }
+
+    // ── Reusable person drawing ──
+    function drawPersonAt(x, y) {
+      ctx.save();
+      ctx.fillStyle='#2c1810';
+      ctx.beginPath(); ctx.roundRect(x,    y+34,14,7,[3,3,4,4]); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(x+18, y+34,14,7,[3,3,4,4]); ctx.fill();
+      ctx.fillStyle='#1a3a6e';
+      ctx.fillRect(x+2, y+22,12,14); ctx.fillRect(x+18,y+22,12,14);
+      ctx.fillStyle='#0d2244'; ctx.fillRect(x,y+22,32,3);
+      ctx.fillStyle='#e63946';
+      ctx.beginPath(); ctx.roundRect(x,y+12,32,12,3); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(x-7,y+12,9,12,4); ctx.fill();
+      ctx.fillStyle='#f4a261'; ctx.beginPath(); ctx.arc(x-3,y+24,4,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#e63946'; ctx.beginPath(); ctx.roundRect(x+30,y+12,9,12,4); ctx.fill();
+      ctx.fillStyle='#f4a261'; ctx.beginPath(); ctx.arc(x+35,y+24,4,0,Math.PI*2); ctx.fill();
+      ctx.fillRect(x+12,y+7,8,7);
+      ctx.beginPath(); ctx.arc(x+16,y+6,9,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#2c1810';
+      ctx.beginPath(); ctx.arc(x+16,y+4,9,Math.PI,0); ctx.fill();
+      ctx.beginPath(); ctx.arc(x+16,y-2,5,Math.PI,0); ctx.fill();
+      ctx.fillStyle='#fff';
+      ctx.beginPath(); ctx.arc(x+11,y+6,2.5,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x+21,y+6,2.5,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#222';
+      ctx.beginPath(); ctx.arc(x+12,y+6,1.4,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x+22,y+6,1.4,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='#8b4513'; ctx.lineWidth=1.3;
+      ctx.beginPath(); ctx.arc(x+16,y+9,4,.15,Math.PI-.15); ctx.stroke();
+      ctx.restore();
+    }
+
+    // ── Cutscene ──
+    let cs = null;
+
+    function startCutscene() {
+      gameState = 'cutscene';
+      cs = {
+        t:0, phase:0,
+        flagY: CASTLE.y,          // hoists up to CASTLE.y-36
+        prinX: CASTLE.x + CASTLE.w/2,
+        mariX: player.x + player.w/2,
+        meetX: CASTLE.x - 72,
+        bigH: 0,
+      };
+    }
+
+    function updateCutscene() {
+      cs.t++;
+      // Pan camera toward castle
+      const tc = Math.max(0, Math.min(CASTLE.x - canvas.width * 0.58, LEVEL_W - canvas.width));
+      cam += (tc - cam) * 0.055;
+
+      if (cs.phase === 0) {
+        cs.flagY = CASTLE.y - Math.min(1, cs.t / 65) * 36;
+        if (cs.t >= 90) { cs.phase = 1; cs.t = 0; }
+
+      } else if (cs.phase === 1) {
+        const spd = 1.5;
+        if (cs.prinX > cs.meetX + 26) cs.prinX -= spd;
+        if (cs.mariX < cs.meetX - 26) cs.mariX += spd;
+        const met = cs.mariX >= cs.meetX - 28 || cs.t > 120;
+        if (met) { cs.prinX = cs.meetX + 26; cs.mariX = cs.meetX - 26; cs.phase = 2; cs.t = 0; }
+
+      } else if (cs.phase === 2) {
+        if (cs.t >= 70) { cs.phase = 3; cs.t = 0; }
+
+      } else if (cs.phase === 3) {
+        cs.bigH = Math.min(1, cs.t / 55);
+        if (cs.t >= 150) { cs.phase = 4; cs.t = 0; launchConfetti(); }
+      }
+      // phase 4 = final screen, wait for click
+    }
+
+    function drawCutscene() {
+      drawBg(); drawGround(); drawPlats();
+
+      // Castle without princess in window
+      const sx = CASTLE.x - cam;
+      ctx.fillStyle='#e8b4d8'; ctx.fillRect(sx,CASTLE.y,CASTLE.w,CASTLE.h);
+      ctx.fillStyle='rgba(0,0,0,.06)';
+      for(let dy=0;dy<CASTLE.h;dy+=14) ctx.fillRect(sx,CASTLE.y+dy,CASTLE.w,1);
+      for(let dx=0;dx<CASTLE.w;dx+=18) ctx.fillRect(sx+dx,CASTLE.y,1,CASTLE.h);
+      ctx.fillStyle='#f0c8e8';
+      for(let i=0;i<5;i++) ctx.fillRect(sx+i*24-4,CASTLE.y-16,14,18);
+      ctx.fillStyle='#d090c0';
+      ctx.beginPath(); ctx.arc(sx,CASTLE.y,15,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(sx+CASTLE.w,CASTLE.y,15,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#7b3f6e';
+      ctx.beginPath(); ctx.roundRect(sx+CASTLE.w/2-14,CASTLE.y+CASTLE.h-52,28,52,14); ctx.fill();
+      // Flag pole
+      ctx.strokeStyle='#888'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(sx+CASTLE.w/2,CASTLE.y-14); ctx.lineTo(sx+CASTLE.w/2,CASTLE.y-42); ctx.stroke();
+      // Animated flag
+      ctx.fillStyle='#ff4444';
+      ctx.beginPath();
+      ctx.moveTo(sx+CASTLE.w/2, cs.flagY);
+      ctx.lineTo(sx+CASTLE.w/2+18, cs.flagY+7);
+      ctx.lineTo(sx+CASTLE.w/2, cs.flagY+15);
+      ctx.fill();
+
+      // Princess walks out from gate (phase ≥ 1)
+      if (cs.phase >= 1) {
+        const psx = cs.prinX - cam;
+        em('👸', psx, GY - 22, 32);
+        // walking heart trail
+        if (cs.phase === 1) {
+          ctx.fillStyle = 'rgba(255,80,140,.55)';
+          heartPath(psx + 22, GY - 46 - Math.sin(cs.t * .22) * 8, 5);
+          ctx.fill();
+        }
+      }
+
+      // Player walks toward princess
+      const msx = cs.mariX - cam;
+      drawPersonAt(msx - 16, GY - 41);
+
+      // Phase 2+: orbiting small hearts around meeting point
+      if (cs.phase >= 2) {
+        const cx = (cs.prinX + cs.mariX) / 2 - cam;
+        const cy = GY - 58;
+        for (let i = 0; i < 7; i++) {
+          const a = cs.t * 0.055 + i * (Math.PI * 2 / 7);
+          const r = 32 + Math.sin(cs.t * 0.07 + i) * 8;
+          ctx.fillStyle = `hsl(${(i * 52 + cs.t * 2) % 360},90%,58%)`;
+          heartPath(cx + Math.cos(a) * r, cy + Math.sin(a) * 15 - 7, 7);
+          ctx.fill();
+        }
+      }
+
+      // Phase 3+: big pulsing heart above them
+      if (cs.phase >= 3) {
+        const cx = (cs.prinX + cs.mariX) / 2 - cam;
+        const cy = GY - 118;
+        const sz = 58 * cs.bigH;
+        const pulse = 1 + Math.sin(cs.t * 0.13) * 0.07;
+        ctx.save();
+        ctx.translate(cx, cy); ctx.scale(pulse, pulse); ctx.translate(-cx, -cy);
+        ctx.shadowColor='#ff0055'; ctx.shadowBlur=30;
+        ctx.fillStyle='#ff1155';
+        heartPath(cx, cy - sz * 0.9, sz); ctx.fill();
+        ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,.38)';
+        ctx.beginPath(); ctx.ellipse(cx-sz*.14, cy-sz*.72, sz*.18, sz*.12, -.45, 0, Math.PI*2); ctx.fill();
+        ctx.restore();
+      }
+
+      // Phase 4: final overlay
+      if (cs.phase === 4) {
+        ctx.fillStyle='rgba(10,3,20,.58)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.shadowColor='#ff69b4'; ctx.shadowBlur=14;
+        ctx.fillStyle='#fff'; ctx.font='bold 20px "Playfair Display",serif';
+        ctx.fillText('🎉 You saved Princess Ravali!', canvas.width/2, canvas.height/2-46);
+        ctx.shadowBlur=0;
+        ctx.font='italic 14px "Playfair Display",serif'; ctx.fillStyle='#ffd6e7';
+        ctx.fillText('"My hero, always." — Ravali 💕', canvas.width/2, canvas.height/2-14);
+        ctx.font='13px Poppins,sans-serif'; ctx.fillStyle='rgba(255,255,255,.9)';
+        ctx.fillText('❤️ '+score+'/'+HEART_POS.length+' hearts collected', canvas.width/2, canvas.height/2+16);
+        ctx.font='11px Poppins,sans-serif'; ctx.fillStyle='rgba(255,255,255,.55)';
+        ctx.fillText('Click to play again', canvas.width/2, canvas.height/2+48);
+      }
+    }
+
+    // ── Collision ──
+    function platCollide(px,py,pw,ph) {
+      if(player.x+player.w > px && player.x < px+pw &&
+         player.y+player.h > py && player.y+player.h < py+ph+Math.abs(player.vy)+2 &&
+         player.vy >= 0) {
+        player.y=py-player.h; player.vy=0; player.onGround=true;
+        player.doubleAvail=kissActive;
+        return true;
+      }
+      return false;
+    }
+
+    // ── Update ──
+    function update() {
+      frame++;
+      const left  = K['ArrowLeft']  || K['KeyA'] || mkeys.left;
+      const right = K['ArrowRight'] || K['KeyD'] || mkeys.right;
+      const jump  = K['ArrowUp']    || K['Space'] || K['KeyW'] || mkeys.jump;
+
+      player.vx = right ? SPD : left ? -SPD : 0;
+
+      if(jump && !jumpConsumed) {
+        if(player.onGround) {
+          player.vy=JUMP; player.onGround=false; jumpConsumed=true;
+        } else if(kissActive && player.doubleAvail) {
+          player.vy=JUMP*.88; player.doubleAvail=false; jumpConsumed=true;
+        }
+      }
+      if(!jump) jumpConsumed=false;
+
+      player.vy+=GRAV;
+      player.x+=player.vx;
+      player.y+=player.vy;
+      if(player.x<0) player.x=0;
+      player.onGround=false;
+
+      GROUND.forEach(([x1,x2])=>{
+        if(player.x+player.w>x1 && player.x<x2)
+          platCollide(x1,GY,x2-x1,canvas.height-GY);
+      });
+      PLATS.forEach(p=>platCollide(p.x,p.y,p.w,16));
+
+      // hearts
+      hearts.forEach(h=>{
+        if(!h.got && Math.abs(player.x+player.w/2-h.x)<20 && Math.abs(player.y+player.h/2-h.y)<20) {
+          h.got=true; score++;
+        }
+      });
+      // kiss
+      if(!kissObj.got && Math.abs(player.x+player.w/2-kissObj.x)<24 && Math.abs(player.y+player.h/2-kissObj.y)<24) {
+        kissObj.got=true; kissActive=true; kissTimer=0; player.doubleAvail=true;
+      }
+      if(kissActive && ++kissTimer>=480) kissActive=false;
+
+      // checkpoint
+      if(player.x>CHECKPOINT_X) checkpointReached=true;
+
+      // camera
+      cam=Math.max(0,Math.min(player.x-canvas.width*.33, LEVEL_W-canvas.width));
+
+      // win
+      if(player.x+player.w>CASTLE.x+10) { gameState='won'; launchConfetti(); }
+
+      // fall
+      if(player.y>canvas.height+60) spawnPlayer(checkpointReached);
+    }
+
+    // ── Loop ──
+    function loop() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawBg(); drawGround(); drawPlats();
+      drawHearts(); drawKiss(); drawCastle();
+      drawPlayer(); drawHUD();
+      if(gameState==='idle')
+        drawOverlay('🕹️ Save Princess Ravali!','Press ▶ or tap START to begin','(Arrow keys / WASD + Space to jump)','rgba(0,0,0,.52)');
+      if(gameState==='won') drawWin();
+      if(gameState==='playing') update();
+      requestAnimationFrame(loop);
+    }
+
+    function start() {
+      if(gameState==='idle'||gameState==='won') {
+        checkpointReached=false;
+        initLevel(); spawnPlayer(false); gameState='playing';
+      }
+    }
+
+    canvas.addEventListener('click',start);
+    canvas.addEventListener('touchend',e=>{e.preventDefault();start();},{passive:false});
+
+    window.startGameLoop = function() { initLevel(); spawnPlayer(false); loop(); };
+  })();
+
+  function initGame() {} // kept for safety
+
+  // ── MEMORY MATCH ──
+  const MEM_EMOJIS = ['💍','🌹','❤️','🌸','🦋','✨','🎂','💌'];
+  let memCards = [], memFlipped = [], memMatched = 0, memMoves = 0, memLocked = false;
+
+  function initMemGame() {
+    const grid = document.getElementById('cardGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    document.getElementById('winMsg').textContent = '';
+    document.getElementById('moveCount').textContent = '0';
+    memFlipped = []; memMatched = 0; memMoves = 0; memLocked = false;
+
+    [...MEM_EMOJIS, ...MEM_EMOJIS]
+      .sort(() => Math.random() - 0.5)
+      .forEach((emoji, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.emoji = emoji;
+        card.innerHTML = `<div class="card-inner"><div class="card-front">✦</div><div class="card-back">${emoji}</div></div>`;
+        card.addEventListener('click', () => memFlip(card));
+        grid.appendChild(card);
+      });
+  }
+
+  function memFlip(card) {
+    if (memLocked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+    card.classList.add('flipped');
+    memFlipped.push(card);
+    if (memFlipped.length === 2) {
+      memMoves++;
+      document.getElementById('moveCount').textContent = memMoves;
+      memLocked = true;
+      const [a, b] = memFlipped;
+      if (a.dataset.emoji === b.dataset.emoji) {
+        a.classList.add('matched'); b.classList.add('matched');
+        a.classList.remove('flipped'); b.classList.remove('flipped');
+        memMatched++;
+        memFlipped = []; memLocked = false;
+        if (memMatched === MEM_EMOJIS.length) {
+          const msg = memMoves <= 20
+            ? `🎉 ${memMoves} moves — just like you, flawless! 💖`
+            : `🌸 You did it in ${memMoves} moves! Beautiful, just like you! 💕`;
+          document.getElementById('winMsg').textContent = msg;
+          launchConfetti();
+        }
+      } else {
+        setTimeout(() => {
+          a.classList.remove('flipped'); b.classList.remove('flipped');
+          memFlipped = []; memLocked = false;
+        }, 900);
+      }
+    }
   }
 </script>
 </body>
