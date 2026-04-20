@@ -1160,6 +1160,63 @@
     .cut-cake-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,57,43,.45); }
     .cut-cake-btn:disabled { opacity: .65; cursor: default; }
 
+    /* ── ALL FIRSTS CINEMATIC VIDEO ── */
+    .firsts-video-wrap {
+      position: relative;
+      width: 100%;
+      max-height: 75vh;
+      overflow: hidden;
+      border-radius: 24px;
+      margin: 3rem 0 2.5rem;
+      box-shadow: 0 20px 60px rgba(10,30,50,.3);
+    }
+    .firsts-video {
+      width: 100%;
+      max-height: 75vh;
+      object-fit: cover;
+      display: block;
+    }
+    .firsts-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,20,40,.55) 0%,
+        rgba(10,20,40,.15) 40%,
+        rgba(10,20,40,.15) 60%,
+        rgba(10,20,40,.7) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .firsts-eyebrow {
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: .5rem;
+    }
+    .firsts-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,.5);
+      margin-bottom: .6rem;
+      line-height: 1.15;
+    }
+    .firsts-sub {
+      font-size: clamp(.85rem, 2vw, 1rem);
+      color: rgba(255,255,255,.82);
+      font-style: italic;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
     /* ── DANCE HEADING ── */
     .dance-title { font-size: clamp(2rem, 6vw, 3.4rem) !important; line-height: 1.2; }
     .dance-word {
@@ -1369,6 +1426,18 @@
         <img src="photos/First Night.jpg" alt="First Night" loading="lazy" />
         <div class="gallery-overlay"><span>Our First Night 🌙</span></div>
       </div>
+    </div>
+  </div>
+
+  <!-- Cinematic: All First Things -->
+  <div class="firsts-video-wrap fade-in">
+    <video class="firsts-video" autoplay muted loop playsinline>
+      <source src="photos/All%20First%20things.m4v" type="video/mp4" />
+    </video>
+    <div class="firsts-video-overlay">
+      <p class="firsts-eyebrow">Every beginning has a magic of its own</p>
+      <h3 class="firsts-title">All Our Firsts ✨</h3>
+      <p class="firsts-sub">Every first was a whole new world — because you were in it.</p>
     </div>
   </div>
 
