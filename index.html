@@ -1159,6 +1159,38 @@
     }
     .cut-cake-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,57,43,.45); }
     .cut-cake-btn:disabled { opacity: .65; cursor: default; }
+
+    /* ── DANCE HEADING ── */
+    .dance-title { font-size: clamp(2rem, 6vw, 3.4rem) !important; line-height: 1.2; }
+    .dance-word {
+      background: linear-gradient(135deg, #c9a84c, #ff6ec7, #4d96ff, #c9a84c);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bashShimmer 3s linear infinite;
+    }
+    .dance-dash { -webkit-text-fill-color: var(--text-light); font-size: .75em; }
+    .dance-bash {
+      display: inline-block;
+      letter-spacing: .18em;
+      background: linear-gradient(90deg, #ff6ec7, #ffd93d, #6bcb77, #4d96ff, #ff6ec7);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bashShimmer 2s linear infinite;
+    }
+    .dance-emojis {
+      display: inline-block;
+      animation: emojiRock .8s ease-in-out infinite alternate;
+      -webkit-text-fill-color: initial;
+    }
+    @keyframes bashShimmer { to { background-position: 300% center; } }
+    @keyframes emojiRock {
+      from { transform: rotate(-8deg) scale(1); }
+      to   { transform: rotate(8deg) scale(1.15); }
+    }
   </style>
 </head>
 <body>
@@ -1303,8 +1335,12 @@
         <div class="gallery-overlay"><span>Haldi Day 💛</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photos/bride-to-be.jpeg" alt="Bride to Be" loading="lazy" />
-        <div class="gallery-overlay"><span>Bride to Be 👰</span></div>
+        <img src="photos/Haldi Dance with Friends and Cousins.jpg" alt="Haldi Dance" loading="lazy" />
+        <div class="gallery-overlay"><span>Haldi Dance 💛🕺</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/bride-to-be.jpeg" alt="Bride to Be Bash" loading="lazy" />
+        <div class="gallery-overlay"><span>Bride-to-Be Bash 👰✨</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/wedding invitation.jpg" alt="Wedding Invitation" loading="lazy" />
@@ -1329,6 +1365,10 @@
         <img src="photos/wedding.jpeg" alt="Wedding" loading="lazy" />
         <div class="gallery-overlay"><span>Wedding Day 💍</span></div>
       </div>
+      <div class="gallery-item gallery-item--tall" onclick="openLightbox(this)">
+        <img src="photos/First Night.jpg" alt="First Night" loading="lazy" />
+        <div class="gallery-overlay"><span>Our First Night 🌙</span></div>
+      </div>
     </div>
   </div>
 
@@ -1336,10 +1376,14 @@
   <div class="gallery-chapter">
     <div class="chapter-label">
       <span class="chapter-line"></span>
-      <span class="chapter-title">🌆 Adventures & Celebrations</span>
+      <span class="chapter-title">🏠 Building Our Life Together</span>
       <span class="chapter-line"></span>
     </div>
     <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Flight to USA (First Flight).jpg" alt="First Flight to USA" loading="lazy" />
+        <div class="gallery-overlay"><span>First Flight to USA ✈️</span></div>
+      </div>
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/first lunch.jpg" alt="First Lunch" loading="lazy" />
         <div class="gallery-overlay"><span>First Lunch Together ☕</span></div>
@@ -1347,6 +1391,10 @@
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/first temple.jpeg" alt="First Temple" loading="lazy" />
         <div class="gallery-overlay"><span>First Temple Visit 🙏</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/First grocery shopping.jpg" alt="First Grocery Shopping" loading="lazy" />
+        <div class="gallery-overlay"><span>First Grocery Run 🛒</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/Your cookingin my home.jpg" alt="Cooking Together" loading="lazy" />
@@ -1367,6 +1415,10 @@
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/first birthday in usa-2.jpg" alt="Birthday Celebration" loading="lazy" />
         <div class="gallery-overlay"><span>Birthday Celebration 🥳</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Feb 20th.jpeg" alt="Feb 20th" loading="lazy" />
+        <div class="gallery-overlay"><span>Feb 20th 😉❤️</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/butterfly.jpg" alt="Butterfly" loading="lazy" />
@@ -1421,8 +1473,10 @@
 
 <!-- ── DANCE VIDEO ── -->
 <section id="video">
-  <span class="section-label">A moment worth replaying</span>
-  <h2 class="section-title">Our Dance 💃🕺</h2>
+  <span class="section-label">🎉 She was born to shine 🎉</span>
+  <h2 class="section-title dance-title">
+    <span class="dance-word">Bride</span><span class="dance-dash">-to-</span><span class="dance-word">Be</span> <span class="dance-bash">B·A·S·H</span> <span class="dance-emojis">💃🪩✨</span>
+  </h2>
   <div class="section-line"></div>
 
   <div class="video-wrap fade-in">
@@ -1430,7 +1484,7 @@
       <source src="photos/dance%20video.MP4" type="video/mp4" />
       Your browser doesn't support video playback.
     </video>
-    <p class="video-caption">Every time I watch this, I fall in love all over again. 🎶</p>
+    <p class="video-caption">Look at you — glowing, dancing, celebrating the woman you are. I could watch this forever. 🌟</p>
   </div>
 </section>
 
