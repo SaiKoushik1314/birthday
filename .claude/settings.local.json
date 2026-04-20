@@ -17,7 +17,9 @@
       "Bash(git merge *)",
       "Bash(git reset *)",
       "WebFetch(domain:saikoushik1314.github.io)",
-      "Bash(brew list *)"
+      "Bash(brew list *)",
+      "Bash(sips -s format jpeg engagment.jpg --out engagment_converted.jpg)",
+      "Bash(sips -s format jpeg \"first lunch.jpg\" --out \"first lunch_converted.jpg\")"
     ]
   }
 }
