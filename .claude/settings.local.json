@@ -4,7 +4,20 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(git -C /Users/ravalikoushik/Documents/workspace/birthday/ remote -v)",
+      "Bash(git rm *)",
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "Bash(git credential *)",
+      "Bash(security delete-internet-password *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(security find-internet-password *)",
+      "Bash(git credential-osxkeychain *)",
+      "Bash(git merge *)",
+      "Bash(git reset *)",
+      "WebFetch(domain:saikoushik1314.github.io)",
+      "Bash(brew list *)"
     ]
   }
 }
