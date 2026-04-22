@@ -1160,6 +1160,115 @@
     .cut-cake-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,57,43,.45); }
     .cut-cake-btn:disabled { opacity: .65; cursor: default; }
 
+    /* ── BRIDE-TO-BE SPOTLIGHT ── */
+    .btb-spotlight {
+      position: relative;
+      width: 100%;
+      height: clamp(320px, 55vw, 520px);
+      margin-top: 1.4rem;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 16px 50px rgba(200,80,180,.25);
+    }
+    .btb-spotlight img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .btb-spotlight:hover img { transform: scale(1.04); }
+    .btb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(180,40,140,.55) 0%,
+        rgba(100,20,180,.4) 50%,
+        rgba(20,10,60,.65) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: .8rem;
+    }
+    .btb-tag {
+      font-size: clamp(.7rem, 1.8vw, .88rem);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,220,255,.85);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      backdrop-filter: blur(4px);
+    }
+    .btb-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .12em;
+      text-shadow: 0 2px 24px rgba(200,80,200,.6);
+      animation: btbPulse 3s ease-in-out infinite;
+    }
+    .btb-sub {
+      font-size: clamp(.85rem, 2.2vw, 1.1rem);
+      color: rgba(255,220,255,.9);
+      font-style: italic;
+      letter-spacing: .06em;
+    }
+    @keyframes btbPulse {
+      0%, 100% { text-shadow: 0 2px 24px rgba(200,80,200,.6); }
+      50%       { text-shadow: 0 2px 40px rgba(255,140,255,.95), 0 0 60px rgba(200,80,200,.4); }
+    }
+
+    /* ── BRIDE-TO-BE DANCE VIDEO (in gallery) ── */
+    .btb-video-wrap {
+      margin: 2rem 0;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a0530 0%, #3a0d5e 50%, #1a0530 100%);
+      box-shadow: 0 16px 50px rgba(180,40,180,.3);
+    }
+    .btb-video-header {
+      padding: 2rem 2rem 1rem;
+      text-align: center;
+    }
+    .btb-video-label {
+      display: block;
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,200,255,.7);
+      margin-bottom: .6rem;
+    }
+    .btb-video-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+    }
+    .btb-video-wrap video {
+      width: 100%;
+      display: block;
+      max-height: 520px;
+      object-fit: contain;
+      background: #000;
+    }
+    .btb-video-caption {
+      text-align: center;
+      padding: 1rem 2rem 1.6rem;
+      font-style: italic;
+      font-size: .95rem;
+      color: rgba(255,210,255,.8);
+    }
+
     /* ── ALL FIRSTS CINEMATIC VIDEO ── */
     .firsts-video-wrap {
       position: relative;
@@ -1342,22 +1451,6 @@
   </div>
 </section>
 
-<!-- ── DANCE VIDEO ── -->
-<section id="video">
-  <span class="section-label">🎉 She was born to shine 🎉</span>
-  <h2 class="section-title dance-title">
-    <span class="dance-word">Bride</span><span class="dance-dash">-to-</span><span class="dance-word">Be</span> <span class="dance-bash">B·A·S·H</span> <span class="dance-emojis">💃🪩✨</span>
-  </h2>
-  <div class="section-line"></div>
-
-  <div class="video-wrap fade-in">
-    <video controls playsinline poster="">
-      <source src="photos/dance%20video.MP4" type="video/mp4" />
-      Your browser doesn't support video playback.
-    </video>
-    <p class="video-caption">Look at you — glowing, dancing, celebrating the woman you are. I could watch this forever. 🌟</p>
-  </div>
-</section>
 
 
 <!-- ── GALLERY ── -->
@@ -1414,14 +1507,34 @@
         <div class="gallery-overlay"><span>Haldi Dance 💛🕺</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photos/bride-to-be.jpeg" alt="Bride to Be Bash" loading="lazy" />
-        <div class="gallery-overlay"><span>Bride-to-Be Bash 👰✨</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/wedding invitation.jpg" alt="Wedding Invitation" loading="lazy" />
         <div class="gallery-overlay"><span>Wedding Invitation 💌</span></div>
       </div>
     </div>
+
+    <!-- Bride-to-Be Bash: full-width spotlight -->
+    <div class="btb-spotlight fade-in" onclick="openLightbox(this)">
+      <img src="photos/bride-to-be.jpeg" alt="Bride to Be Bash" loading="lazy" />
+      <div class="btb-overlay">
+        <div class="btb-tag">She said YES — then she celebrated like a queen 👑</div>
+        <h3 class="btb-heading">Bride · To · Be 💃</h3>
+        <p class="btb-sub">Her night. Her vibe. Her glow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bride-to-Be Bash Dance Video -->
+  <div class="btb-video-wrap fade-in">
+    <div class="btb-video-header">
+      <span class="btb-video-label">🎉 The one who lights up every room 🎉</span>
+      <h3 class="btb-video-title">
+        <span class="dance-word">Watch</span> <span class="dance-word">Her</span> <span class="dance-bash">G·O·W</span> <span class="dance-emojis">💃🪩✨</span>
+      </h3>
+    </div>
+    <video controls playsinline>
+      <source src="photos/dance%20video.MP4" type="video/mp4" />
+    </video>
+    <p class="btb-video-caption">Look at you — glowing, dancing, celebrating the woman you are. I could watch this forever. 🌟</p>
   </div>
 
   <!-- Chapter 3: Wedding -->
@@ -1504,17 +1617,33 @@
         <div class="gallery-overlay"><span>Feb 20th 😉❤️</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Birthday 2023.JPG" alt="Birthday 2023" loading="lazy" />
+        <div class="gallery-overlay"><span>Birthday 2023 🎂</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Birthday 2025.jpg" alt="Birthday 2025" loading="lazy" />
+        <div class="gallery-overlay"><span>Birthday 2025 🥳</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Acting.jpeg" alt="Acting" loading="lazy" />
+        <div class="gallery-overlay"><span>Her Stage 🎭</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Cycling Day.jpeg" alt="Cycling Day" loading="lazy" />
+        <div class="gallery-overlay"><span>Cycling Day 🚴</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/butterfly.jpg" alt="Butterfly" loading="lazy" />
         <div class="gallery-overlay"><span>Butterfly 🦋</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Chapter 5: Road Trips -->
+  <!-- Chapter 5: Adventures -->
   <div class="gallery-chapter">
     <div class="chapter-label">
       <span class="chapter-line"></span>
-      <span class="chapter-title">🛣️ Everywhere With You</span>
+      <span class="chapter-title">🌍 Everywhere With You</span>
       <span class="chapter-line"></span>
     </div>
     <div class="gallery-grid">
@@ -1541,6 +1670,30 @@
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/NH-2.JPG" alt="New Hampshire 2" loading="lazy" />
         <div class="gallery-overlay"><span>New Hampshire Trails 🌲</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Nashville.jpeg" alt="Nashville" loading="lazy" />
+        <div class="gallery-overlay"><span>Nashville 🎸</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Michigan.JPG" alt="Michigan" loading="lazy" />
+        <div class="gallery-overlay"><span>Michigan 🏞️</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Florida.JPG" alt="Florida" loading="lazy" />
+        <div class="gallery-overlay"><span>Florida ☀️</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Naygra waterfalls.jpeg" alt="Niagara Falls" loading="lazy" />
+        <div class="gallery-overlay"><span>Niagara Falls 💦</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/SFO trrip.jpeg" alt="San Francisco" loading="lazy" />
+        <div class="gallery-overlay"><span>San Francisco 🌉</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photos/Wild Safari.JPG" alt="Wild Safari" loading="lazy" />
+        <div class="gallery-overlay"><span>Wild Safari 🦁</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="photos/snow.jpeg" alt="Snow" loading="lazy" />
